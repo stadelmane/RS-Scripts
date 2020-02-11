@@ -63,8 +63,8 @@ def minecoal():
 	failures = 0
 	mouse = Controller()
 	# while(1):
-	for j in range(1000):
-		for i in range(8):
+	for j in range(1):
+		for i in range(2):
 			failures = 0
 
 			im = pyautogui.screenshot()
@@ -99,13 +99,40 @@ def minecoal():
 				mouse.position = (x, y)
 				time.sleep(.1 + .0001 * random.randrange(1, 500))
 				mouse.click(Button.left, 2)
-				while(pyautogui.pixelMatchesColor(750, 275, (57, 30, 20), tolerance = 20)):
+				while(pyautogui.pixelMatchesColor(750, 275, (57, 30, 20), tolerance = 15)):
 					im = pyautogui.screenshot()
 					failures += 1
 					if failures % 6 == 0:
 						mouse.click(Button.left, 1)
 
+		# dropLogs()
+
+def fastminecoal():
+	failures = 0
+	mouse = Controller()
+	# while(1):
+	for j in range(1000):
+		for i in range(8):
+			x , y = coalpos(729 , 435)
+			mouse.position = (x, y)
+			time.sleep(.5 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			time.sleep(2 + .0001 * random.randrange(1, 500))
+
+			x , y = coalpos(620 , 320)
+			mouse.position = (x, y)
+			time.sleep(.5 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			time.sleep(2 + .0001 * random.randrange(1, 500))
+
+			x , y = coalpos(735 , 215)
+			mouse.position = (x, y)
+			time.sleep(.5 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			time.sleep(2 + .0001 * random.randrange(1, 500))
+
 		dropLogs()
+		time.sleep(random.randrange(1, 7) + .0001 * random.randrange(1, 500))
 
 		
 
@@ -143,7 +170,7 @@ def cutLogs():
 	mouse.position = (818, 324)
 	time.sleep(1 + .001 * random.randrange(1, 500))
 	im = pyautogui.screenshot()
-	if pyautogui.pixelMatchesColor(494, 80, (1, 213, 212), tolerance =30):
+	if pyautogui.pixelMatchesColor(494, 80, (1, 213, 212), tolerance = 30):
 		mouse.click(Button.left, 1)
 
 
@@ -155,7 +182,8 @@ def getMous():
 
 def main():
 	# getMous()
-	minecoal()
+	# minecoal()
+	fastminecoal()
 	# dropLogs()
 
 
