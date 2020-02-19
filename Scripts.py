@@ -29,29 +29,58 @@ def lightLogs():
 			time.sleep(10 + .0001 * random.randrange(1, 500))
 	moveLeft()
 
+def logOut():
+	mouse = Controller()
+	x , y = random.randrange(1147, 1165) , random.randrange(74, 92)
+	pyautogui.moveTo(x, y, duration = (.3 + .01 * random.randrange(1, 5)))
+	mouse.click(Button.left, 1)
+	x , y = random.randrange(1005, 1130) , random.randrange(450, 470)
+	pyautogui.moveTo(x, y, duration = (.3 + .01 * random.randrange(1, 5)))
+	mouse.click(Button.left, 1)
+
+
+
 def dropLogs():
 	mouse = Controller()
 	for over in range(4):
 		for down in range(6):
 			x , y = droppos(1005 + 40 * over , 295 + 33 * down)
-			mouse.position = (x , y)
+			# mouse.position = (x , y)
+			pyautogui.moveTo(x, y, duration = (.2 + .01 * random.randrange(1, 5)))
 			# mouse.position = (1008 + 41 * over , 294 + 37 * down)
-			time.sleep(.35 + .0001 * random.randrange(1, 500))
+			# time.sleep(.35 + .0001 * random.randrange(1, 500))
 			mouse.click(Button.left, 1)	
 
 def mineEss():
 	for i in range(100):
 		mouse = Controller()
-		time.sleep(4 + .0001 * random.randrange(1, 500))
-		mouse.position = (795, 240)
+		x , y = Esspos(729, 236)
+		pyautogui.moveTo(x, y, duration = (.75 + .01 * random.randrange(1, 5)))
 		time.sleep(1 + .0001 * random.randrange(1, 500))
 		mouse.click(Button.left, 1)
-		time.sleep(40 + .0001 * random.randrange(1, 500))
+		im = pyautogui.screenshot()
+		count = 0
+		while (pyautogui.pixelMatchesColor(1133, 473, (67, 61, 61), tolerance = 0) != True):
+			time.sleep(.001 * random.randrange(1, 500))
+			count += 1
+			im = pyautogui.screenshot()
+			if count > 120:
+				count = 0
+				x , y = Esspos(729, 236)
+				pyautogui.moveTo(x, y, duration = (.01 * random.randrange(10, 25)))
+				time.sleep(1 + .0001 * random.randrange(1, 500))
+				mouse.click(Button.left, 1)
+		print(count)
 		dropLogs()
 
 def droppos(x , y):
 	x = random.randrange(x, x + 10)
 	y = random.randrange(y, y + 10)
+	return (x , y)
+
+def Esspos(x , y):
+	x = random.randrange(x, x + 50)
+	y = random.randrange(y, y + 50)
 	return (x , y)
 
 def coalpos(x , y):
@@ -177,14 +206,17 @@ def cutLogs():
 
 def getMous():
 	im = pyautogui.screenshot()
-	print(im.getpixel((675, 330)))
+	print(im.getpixel((1133, 473)))
 
 
 def main():
+	logOut()
+	# getMous()
 	# getMous()
 	# minecoal()
-	fastminecoal()
+	# fastminecoal()
 	# dropLogs()
+	mineEss()
 
 
 main()
