@@ -322,12 +322,17 @@ def main():
 	# minecoal()
 	# fastminecoal()
 	# dropLogs()
+<<<<<<< HEAD
 	# mineEss()
 	string()
 	# cannonBall()
 
 	# logOut()
 
+=======
+	mineEss()
+	print("hi")
+>>>>>>> e049f505b649dd2b37a4bb90bc6e6bab18fd8a31
 
 main()
 
