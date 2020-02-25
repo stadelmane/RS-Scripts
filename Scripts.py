@@ -302,14 +302,14 @@ def getMous():
 
 def cannonBall():
 	mouse = Controller()
-	# iron = pyautogui.locateOnScreen('Screenshots/iron.png')
+	iron = pyautogui.locateOnScreen('Screenshots/iron.png')
 	bankspot = pyautogui.locateOnScreen('Screenshots/bankcorner.png', confidence = .70)
 	pyautogui.moveTo(bankspot[0] + 40 , bankspot[1] + 40  , randTime())
 	mouse.click(Button.left, 1)
 
 
 
-	# print(iron)
+	print(iron)
 	print(bankspot)
 
 
