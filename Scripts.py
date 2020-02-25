@@ -31,12 +31,9 @@ def lightLogs():
 
 def logOut():
 	mouse = Controller()
-	x , y = random.randrange(1147, 1165) , random.randrange(74, 92)
-	pyautogui.moveTo(x, y, duration = (.3 + .01 * random.randrange(1, 5)))
-	mouse.click(Button.left, 1)
-	x , y = random.randrange(1005, 1130) , random.randrange(450, 470)
-	pyautogui.moveTo(x, y, duration = (.3 + .01 * random.randrange(1, 5)))
-	mouse.click(Button.left, 1)
+	log = pyautogui.locateOnScreen('Screenshots/logout.png')
+	print(log[1] , log[2])
+
 
 
 
@@ -52,7 +49,8 @@ def dropLogs():
 			mouse.click(Button.left, 1)	
 
 def mineEss():
-	for i in range(100):
+	for i in range(5):
+		print("itteration: " , i)
 		mouse = Controller()
 		x , y = Esspos(729, 236)
 		pyautogui.moveTo(x, y, duration = (.75 + .01 * random.randrange(1, 5)))
@@ -88,53 +86,147 @@ def coalpos(x , y):
 	y = random.randrange(y, y + 50)
 	return (x , y)
 
+
+def missclickLeft(x , y):
+	mouse = Controller()
+	print('fail left')
+	pyautogui.moveTo(random.randrange(x - 30, x - 50) , random.randrange(y, y+8) , randTime())
+	mouse.click(Button.left, 1)
+	return
+
+def missclickRight(x , y):
+	mouse = Controller()
+	print('fail right')
+	pyautogui.moveTo(random.randrange(x + 30, x+ 50) , random.randrange(y, y+9) , randTime())
+	mouse.click(Button.left, 1)
+	return
+
+def randTime():
+	num = random.randrange(1, 1000)
+	if num <= 900:
+		return .275 + .001 * random.randrange(1, 100)
+	if num <= 950:
+		return .4 + .001 * random.randrange(1, 100)
+	else:
+		return random.randrange(5 , 7) * .01 + .001 * random.randrange(1, 100)
+
+def stringCord(x , y):
+	return random.randrange(x, x+10) , random.randrange(y, y+15)
+
+
+def string():
+	mouse = Controller()
+	input('press enter on item 1!')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter on item 2!')
+	Xtwo , Ytwo = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter on item 3!')
+	Xthree , Ythree = int((mouse.position)[0]) , int((mouse.position)[1])
+	
+	iters = int(input("Please enter how many iterations: "))
+	for i in range(iters):
+		print(i)
+
+		if random.randrange(1, 31) == 30:
+			if random.randrange(1, 3) == 1:
+				# missclickLeft(Xtwo , Ytwo)
+				pass
+			else:
+				x1 , y1 = stringCord(Xone , Yone)
+				pyautogui.moveTo(x1 , y1 , randTime())
+				mouse.click(Button.left, 1)
+				missclickRight(Xone , Yone)
+				pass
+		else:
+			x1 , y1 = stringCord(Xone , Yone)
+			pyautogui.moveTo(x1 , y1 , randTime())
+			mouse.click(Button.left, 1)
+			x2 , y2 = stringCord(Xtwo , Ytwo)
+			pyautogui.moveTo(x2 , y2 , randTime())
+			time.sleep(random.randrange(11, 15) + .001 * random.randrange(1, 50))
+			mouse.click(Button.left, 1)
+			x3 , y3 = stringCord(Xthree , Ythree)
+			pyautogui.moveTo(x3 , y3 , randTime() + .097)
+			time.sleep(.1 + random.randrange(1, 5))
+			mouse.click(Button.left, 1)
+
+
+
+
+
+
 def minecoal():
 	failures = 0
 	mouse = Controller()
-	# while(1):
-	for j in range(1):
-		for i in range(2):
-			failures = 0
+	im = pyautogui.screenshot()
 
-			im = pyautogui.screenshot()
-			if pyautogui.pixelMatchesColor(752, 500, (39, 20, 14), tolerance =20):
-				x , y = coalpos(729 , 428)
-				mouse.position = (x, y)
-				time.sleep(.1 + .0001 * random.randrange(1, 500))
-				mouse.click(Button.left, 2)
-				while(pyautogui.pixelMatchesColor(752, 500, (39, 20, 14), tolerance =20)):
-					failures += 1
-					im = pyautogui.screenshot()
-					if failures % 6 == 0:
-						mouse.click(Button.left, 1)
+	time.sleep(4 + .0001 * random.randrange(1, 500))
 
-			failures = 0
 
-			if pyautogui.pixelMatchesColor(675, 330, (50, 26, 17), tolerance =20):
-				x , y = coalpos(620 , 310)
-				mouse.position = (x, y)
-				time.sleep(.1 + .0001 * random.randrange(1, 500))
-				mouse.click(Button.left, 2)
-				while(pyautogui.pixelMatchesColor(675, 330, (50, 26, 17), tolerance = 20)):
-					failures += 1
-					im = pyautogui.screenshot()
-					if failures % 6 == 0:
-						mouse.click(Button.left, 1)
+	input('press enter on rock 1!')
+	rock1_x , rock1_y = int((mouse.position)[0]) , int((mouse.position)[1])
 
-			failures = 0
+	input('press enter on rock 2!')
+	rock2_x , rock2_y = int((mouse.position)[0]) , int((mouse.position)[1])
 
-			if pyautogui.pixelMatchesColor(750, 275, (57, 30, 20), tolerance =20):
-				x , y = coalpos(735 , 205)
-				mouse.position = (x, y)
-				time.sleep(.1 + .0001 * random.randrange(1, 500))
-				mouse.click(Button.left, 2)
-				while(pyautogui.pixelMatchesColor(750, 275, (57, 30, 20), tolerance = 15)):
-					im = pyautogui.screenshot()
-					failures += 1
-					if failures % 6 == 0:
-						mouse.click(Button.left, 1)
+	input('press enter on rock 3!')
+	rock3_x , rock3_y = int((mouse.position)[0]) , int((mouse.position)[1])
+	rock1 = (im.getpixel((rock1_y, rock1_x)))
+	rock2 = (im.getpixel((rock2_y, rock2_x)))
+	rock3 = (im.getpixel((rock3_y, rock3_x)))
 
-		# dropLogs()
+	print("error checking here!")
+
+
+
+	for itterations in range(5000):
+		failures = 0
+		print("failing")
+		print(pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10))
+		print(im.getpixel((rock1_y, rock1_x)))
+		print(rock1[0], rock1[1], rock1[2])
+		# im = pyautogui.screenshot()
+		if pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10):
+			print("here1")
+			x , y = coalpos(rock1_x , rock1_y)
+			mouse.position = (x, y)
+			time.sleep(.1 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			while(pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10)):
+				failures += 1
+				# im = pyautogui.screenshot()
+				if failures % 6 == 0:
+					mouse.click(Button.left, 1)
+
+		failures = 0
+
+		if pyautogui.pixelMatchesColor(rock2_x, rock2_y, (rock2[0], rock2[1], rock2[2]), tolerance =10):
+			x , y = coalpos(rock2_x , rock2_y)
+			mouse.position = (x, y)
+			time.sleep(.1 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			while(pyautogui.pixelMatchesColor(rock2_x, rock2_y, (rock2[0], rock2[1], rock2[2]), tolerance =10)):
+				failures += 1
+				# im = pyautogui.screenshot()
+				if failures % 6 == 0:
+					mouse.click(Button.left, 1)
+
+		failures = 0
+
+		if pyautogui.pixelMatchesColor(rock3_x, rock3_y, (rock3[0], rock3[1], rock3[2]), tolerance =10):
+			x , y = coalpos(rock3_x , rock3_y)
+			mouse.position = (x, y)
+			time.sleep(.1 + .0001 * random.randrange(1, 500))
+			mouse.click(Button.left, 2)
+			while(pyautogui.pixelMatchesColor(rock3_x, rock3_y, (rock3[0], rock3[1], rock3[2]), tolerance =20)):
+				failures += 1
+				# im = pyautogui.screenshot()
+				if failures % 6 == 0:
+					mouse.click(Button.left, 1)
+
+		failures = 0
 
 def fastminecoal():
 	failures = 0
@@ -208,15 +300,33 @@ def getMous():
 	im = pyautogui.screenshot()
 	print(im.getpixel((1133, 473)))
 
+def cannonBall():
+	mouse = Controller()
+	# iron = pyautogui.locateOnScreen('Screenshots/iron.png')
+	bankspot = pyautogui.locateOnScreen('Screenshots/bankcorner.png', confidence = .70)
+	pyautogui.moveTo(bankspot[0] + 40 , bankspot[1] + 40  , randTime())
+	mouse.click(Button.left, 1)
+
+
+
+	# print(iron)
+	print(bankspot)
+
+
+
+
 
 def main():
-	logOut()
 	# getMous()
 	# getMous()
 	# minecoal()
 	# fastminecoal()
 	# dropLogs()
-	mineEss()
+	# mineEss()
+	string()
+	# cannonBall()
+
+	# logOut()
 
 
 main()
