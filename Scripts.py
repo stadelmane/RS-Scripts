@@ -217,7 +217,7 @@ def main():
 	# fastminecoal()
 	# dropLogs()
 	mineEss()
-
+	print("hi")
 
 main()
 
