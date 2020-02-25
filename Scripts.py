@@ -31,8 +31,18 @@ def lightLogs():
 
 def logOut():
 	mouse = Controller()
-	log = pyautogui.locateOnScreen('Screenshots/logout.png')
-	print(log[1] , log[2])
+
+	log = pyautogui.locateOnScreen('Screenshots/log.png' , confidence = .8)
+	print(log)
+	if log:
+		pyautogui.moveTo(log[1], log[2], duration = (.2 + .01 * random.randrange(1, 5)))
+		mouse.click(Button.left, 1)
+
+	log = pyautogui.locateOnScreen('Screenshots/logout.png' , confidence = .8)
+	print(log)
+	if log:
+		pyautogui.moveTo(log[1], log[2], duration = (.2 + .01 * random.randrange(1, 5)))
+		mouse.click(Button.left, 1)
 
 
 
@@ -322,17 +332,13 @@ def main():
 	# minecoal()
 	# fastminecoal()
 	# dropLogs()
-<<<<<<< HEAD
 	# mineEss()
-	string()
+	# string()
 	# cannonBall()
 
-	# logOut()
+	logOut()
 
-=======
-	mineEss()
-	print("hi")
->>>>>>> e049f505b649dd2b37a4bb90bc6e6bab18fd8a31
+	# mineEss()
 
 main()
 
