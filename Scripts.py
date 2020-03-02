@@ -1,4 +1,5 @@
 from pynput.mouse import Button, Controller
+from Custom_Modules import realmouse
 import webbrowser
 import time
 import random
@@ -12,7 +13,6 @@ def moveLeft():
 			mouse.position = (667, 345)
 			time.sleep(1 + .0001 * random.randrange(1, 500))
 			mouse.click(Button.left, 1)
-
 
 
 def lightLogs():
@@ -43,9 +43,6 @@ def logOut():
 	if log:
 		pyautogui.moveTo(log[1], log[2], duration = (.2 + .01 * random.randrange(1, 5)))
 		mouse.click(Button.left, 1)
-
-
-
 
 def dropLogs():
 	mouse = Controller()
@@ -100,7 +97,7 @@ def coalpos(x , y):
 def missclickLeft(x , y):
 	mouse = Controller()
 	print('fail left')
-	pyautogui.moveTo(random.randrange(x - 30, x - 50) , random.randrange(y, y+8) , randTime())
+	pyautogui.moveTo(random.randrange((x - 25), (x - 10)) , random.randrange(y, y+8) , randTime())
 	mouse.click(Button.left, 1)
 	return
 
@@ -141,7 +138,7 @@ def string():
 
 		if random.randrange(1, 31) == 30:
 			if random.randrange(1, 3) == 1:
-				# missclickLeft(Xtwo , Ytwo)
+				missclickLeft(Xtwo , Ytwo)
 				pass
 			else:
 				x1 , y1 = stringCord(Xone , Yone)
@@ -151,15 +148,16 @@ def string():
 				pass
 		else:
 			x1 , y1 = stringCord(Xone , Yone)
-			pyautogui.moveTo(x1 , y1 , randTime())
+			realmouse.move_mouse_to(x1 , y1)
 			mouse.click(Button.left, 1)
+
 			x2 , y2 = stringCord(Xtwo , Ytwo)
-			pyautogui.moveTo(x2 , y2 , randTime())
+			realmouse.move_mouse_to(x2 , y2)
 			time.sleep(random.randrange(11, 15) + .001 * random.randrange(1, 50))
 			mouse.click(Button.left, 1)
+
 			x3 , y3 = stringCord(Xthree , Ythree)
-			pyautogui.moveTo(x3 , y3 , randTime() + .097)
-			time.sleep(.1 + random.randrange(1, 5))
+			realmouse.move_mouse_to(x3 , y3)
 			mouse.click(Button.left, 1)
 
 
@@ -312,17 +310,65 @@ def getMous():
 
 def cannonBall():
 	mouse = Controller()
-	iron = pyautogui.locateOnScreen('Screenshots/iron.png')
-	bankspot = pyautogui.locateOnScreen('Screenshots/bankcorner.png', confidence = .70)
-	pyautogui.moveTo(bankspot[0] + 40 , bankspot[1] + 40  , randTime())
-	mouse.click(Button.left, 1)
+
+	ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
+
+	while(True):
+		furnace = None
+		startcannonballs = None
+		smeltingConfirmation = None
+		cannonTeller = None
+		yes = None
+
+		furnace = pyautogui.locateOnScreen('Screenshots/furnace.png', confidence = .7)
+		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
+		smelting = pyautogui.locateOnScreen('Screenshots/smelting.png', confidence = .80)
+		
 
 
 
-	print(iron)
-	print(bankspot)
+		while (not furnace):
+			furnace = pyautogui.locateOnScreen('Screenshots/furnace.png', confidence = .7)
+		if furnace:
+			print('furnace')
+			realmouse.move_mouse_to( random.randrange(furnace[0] + 2, furnace[0] + furnace[2] - 2) , random.randrange(furnace[1] + 2 , furnace[1] + furnace[3] - 2) )
+			mouse.click(Button.left, 1)
 
+		# waiting for cannonballs
+		startcannonballs = pyautogui.locateOnScreen('Screenshots/startcannonballs.png', confidence = .90)
+		while (not startcannonballs):
+			print("Waiting for cannon balls")
+			startcannonballs = pyautogui.locateOnScreen('Screenshots/startcannonballs.png', confidence = .90)
 
+		# clicking to start cannon balls
+		print("starting cannon balls")
+		realmouse.move_mouse_to( random.randrange(startcannonballs[0] + 5, startcannonballs[0] + startcannonballs[2] - 5) , 
+			random.randrange(startcannonballs[1] + 5 , startcannonballs[1] + startcannonballs[3] - 5))
+		mouse.click(Button.left, 1)
+
+		time.sleep(10)
+		smeltingConfirmation = pyautogui.locateOnScreen('Screenshots/smelting.png', confidence = .50)
+		print(smeltingConfirmation)
+		while(smeltingConfirmation):
+			print("still smelting")
+			smeltingConfirmation = pyautogui.locateOnScreen('Screenshots/smelting.png', confidence = .50)
+
+		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
+		if (cannonTeller):
+			realmouse.move_mouse_to(random.randrange(ironnote[0] + 1, ironnote[0] + ironnote[2] - 1) , random.randrange(ironnote[1] + 1 , ironnote[1] + ironnote[3] - 1))
+			mouse.click(Button.left, 1)
+
+			realmouse.move_mouse_to(random.randrange(cannonTeller[0] + 15 , cannonTeller[0] + cannonTeller[2] - 5) , random.randrange(cannonTeller[1] + 5, cannonTeller[1] + cannonTeller[3] - 5))
+			mouse.click(Button.left, 1)
+
+		time.sleep(5)
+		while (not yes):
+			yes = pyautogui.locateOnScreen('Screenshots/yes.png', confidence = .70)
+		if (yes):
+			realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
+			mouse.click(Button.left, 1)
+		else:
+			print("hi")
 
 
 
@@ -334,9 +380,9 @@ def main():
 	# dropLogs()
 	# mineEss()
 	# string()
-	# cannonBall()
+	cannonBall()
 
-	logOut()
+	# logOut()
 
 	# mineEss()
 
