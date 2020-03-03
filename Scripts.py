@@ -32,16 +32,17 @@ def lightLogs():
 def logOut():
 	mouse = Controller()
 
-	log = pyautogui.locateOnScreen('Screenshots/log.png' , confidence = .8)
+	log = pyautogui.locateOnScreen('Screenshots/log.png' , confidence = .9)
 	print(log)
 	if log:
-		pyautogui.moveTo(log[1], log[2], duration = (.2 + .01 * random.randrange(1, 5)))
+		realmouse.move_mouse_to(random.randrange(log[0] + 3, log[0] + log[2] - 3) , 
+			random.randrange(log[1] + 3, log[1] + log[3] - 3))
 		mouse.click(Button.left, 1)
 
-	log = pyautogui.locateOnScreen('Screenshots/logout.png' , confidence = .8)
-	print(log)
+	log = pyautogui.locateOnScreen('Screenshots/logout.png' , confidence = .9)
 	if log:
-		pyautogui.moveTo(log[1], log[2], duration = (.2 + .01 * random.randrange(1, 5)))
+		realmouse.move_mouse_to(random.randrange(log[0] + 3, log[0] + log[2] - 3) , 
+			random.randrange(log[1] + 3, log[1] + log[3] - 3))
 		mouse.click(Button.left, 1)
 
 def dropLogs():
@@ -328,6 +329,7 @@ def cannonBall():
 
 
 		while (not furnace):
+			print("here")
 			furnace = pyautogui.locateOnScreen('Screenshots/furnace.png', confidence = .7)
 		if furnace:
 			print('furnace')
@@ -380,9 +382,9 @@ def main():
 	# dropLogs()
 	# mineEss()
 	# string()
-	cannonBall()
+	# cannonBall()
 
-	# logOut()
+	logOut()
 
 	# mineEss()
 
