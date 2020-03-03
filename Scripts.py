@@ -38,6 +38,7 @@ def logOut():
 		realmouse.move_mouse_to(random.randrange(log[0] + 3, log[0] + log[2] - 3) , 
 			random.randrange(log[1] + 3, log[1] + log[3] - 3))
 		mouse.click(Button.left, 1)
+		time.sleep(1 + .0001 * random.randrange(1, 500))
 
 	log = pyautogui.locateOnScreen('Screenshots/logout.png' , confidence = .9)
 	if log:
@@ -381,7 +382,7 @@ def main():
 	# fastminecoal()
 	# dropLogs()
 	# mineEss()
-	# string()
+	string()
 	# cannonBall()
 
 	logOut()
