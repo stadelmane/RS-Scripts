@@ -310,12 +310,31 @@ def getMous():
 	im = pyautogui.screenshot()
 	print(im.getpixel((1133, 473)))
 
+def skillcheck(skill):
+	mouse = Controller()
+	skillTab = pyautogui.locateOnScreen('Screenshots/skillTab.png', confidence = .70)
+	if skillTab:
+		realmouse.move_mouse_to( random.randrange(skillTab[0] + 2, skillTab[0] + skillTab[2] - 2) , random.randrange(skillTab[1] + 2 , skillTab[1] + skillTab[3] - 2) )
+		mouse.click(Button.left, 1)
+	
+	skill = pyautogui.locateOnScreen('Screenshots/' + skill + '.png' , confidence = .50)
+	if skill:
+		realmouse.move_mouse_to( random.randrange(skill[0] + 2, skill[0] + skill[2] - 2) , random.randrange(skill[1] + 2 , skill[1] + skill[3] - 2) )
+		time.sleep(3 + .0001 * random.randrange(1, 500))
+	
+	inv = pyautogui.locateOnScreen('Screenshots/inv.png', confidence = .70)
+	if inv:
+		realmouse.move_mouse_to( random.randrange(inv[0] + 2, inv[0] + inv[2] - 2) , random.randrange(inv[1] + 2 , inv[1] + inv[3] - 2) )
+		mouse.click(Button.left, 1)	
+	else:
+		logout()
+
+
 def cannonBall():
 	mouse = Controller()
-
 	ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
 
-	while(True):
+	while(ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)):
 		furnace = None
 		startcannonballs = None
 		smeltingConfirmation = None
@@ -325,9 +344,6 @@ def cannonBall():
 		furnace = pyautogui.locateOnScreen('Screenshots/furnace.png', confidence = .7)
 		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
 		smelting = pyautogui.locateOnScreen('Screenshots/smelting.png', confidence = .80)
-		
-
-
 
 		while (not furnace):
 			print("here")
@@ -355,6 +371,9 @@ def cannonBall():
 		while(smeltingConfirmation):
 			print("still smelting")
 			smeltingConfirmation = pyautogui.locateOnScreen('Screenshots/smelting.png', confidence = .50)
+			if random.randrange(0, 1000) == 68:
+				skillcheck('minning')
+
 
 		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
 		if (cannonTeller):
@@ -384,7 +403,6 @@ def main():
 	# mineEss()
 	# string()
 	cannonBall()
-
 	logOut()
 
 	# mineEss()
