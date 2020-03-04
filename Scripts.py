@@ -382,8 +382,8 @@ def main():
 	# fastminecoal()
 	# dropLogs()
 	# mineEss()
-	string()
-	# cannonBall()
+	# string()
+	cannonBall()
 
 	logOut()
 
