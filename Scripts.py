@@ -334,7 +334,7 @@ def cannonBall():
 	mouse = Controller()
 	ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
 
-	while(ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)):
+	while(ironnote):
 		furnace = None
 		startcannonballs = None
 		smeltingConfirmation = None
@@ -391,6 +391,8 @@ def cannonBall():
 			mouse.click(Button.left, 1)
 		else:
 			print("hi")
+
+		ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
 
 
 
