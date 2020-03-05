@@ -374,14 +374,18 @@ def cannonBall():
 			if random.randrange(0, 1000) == 68:
 				skillcheck('minning')
 
-
-		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
-		if (cannonTeller):
+		while (not cannonTeller):
+			cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
+		
+		ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
+		if (ironnote):
 			realmouse.move_mouse_to(random.randrange(ironnote[0] + 1, ironnote[0] + ironnote[2] - 1) , random.randrange(ironnote[1] + 1 , ironnote[1] + ironnote[3] - 1))
 			mouse.click(Button.left, 1)
 
 			realmouse.move_mouse_to(random.randrange(cannonTeller[0] + 15 , cannonTeller[0] + cannonTeller[2] - 5) , random.randrange(cannonTeller[1] + 5, cannonTeller[1] + cannonTeller[3] - 5))
 			mouse.click(Button.left, 1)
+		else:
+			logOut()
 
 		time.sleep(5)
 		while (not yes):
@@ -392,7 +396,7 @@ def cannonBall():
 		else:
 			print("hi")
 
-		ironnote = pyautogui.locateOnScreen('Screenshots/ironnote.png', confidence = .70)
+		
 
 
 
@@ -404,8 +408,9 @@ def main():
 	# dropLogs()
 	# mineEss()
 	# string()
-	cannonBall()
-	logOut()
+	skillcheck('minning')
+	# cannonBall()
+	# logOut()
 
 	# mineEss()
 
