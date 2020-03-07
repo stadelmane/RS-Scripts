@@ -391,8 +391,9 @@ def cannonBall():
 		else:
 			logOut()
 
-		time.sleep(6)
+		time.sleep(4)
 		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
+		yes = pyautogui.locateOnScreen('Screenshots/yes.png', confidence = .70)
 		if (not yes and cannonTeller):
 			realmouse.move_mouse_to(random.randrange(ironnote[0] + 1, ironnote[0] + ironnote[2] - 1) , random.randrange(ironnote[1] + 1 , ironnote[1] + ironnote[3] - 1))
 			mouse.click(Button.left, 1)
