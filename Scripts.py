@@ -405,15 +405,15 @@ def cannonBall():
 
 		realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
 		mouse.click(Button.left, 1)
-		time.sleep(1.5)
-		inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
-		if (not inviron):
-			realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
-			mouse.click(Button.left, 1)
-			inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
-			time.sleep(1.5)
-		if (not inviron):
-			logOut()
+		# time.sleep(1.5)
+		# inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
+		# if (not inviron):
+		# 	realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
+		# 	mouse.click(Button.left, 1)
+		# 	inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
+		# 	time.sleep(1.5)
+		# if (not inviron):
+		# 	logOut()
 
 		
 
