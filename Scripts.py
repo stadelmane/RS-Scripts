@@ -329,6 +329,10 @@ def skillcheck(skill):
 	else:
 		logout()
 
+def test():
+	inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
+	print(inviron)
+
 
 def cannonBall():
 	mouse = Controller()
@@ -387,20 +391,32 @@ def cannonBall():
 		else:
 			logOut()
 
-		time.sleep(5)
+		time.sleep(6)
+		cannonTeller = pyautogui.locateOnScreen('Screenshots/cannonTeller.png', confidence = .70)
+		if (not yes and cannonTeller):
+			realmouse.move_mouse_to(random.randrange(ironnote[0] + 1, ironnote[0] + ironnote[2] - 1) , random.randrange(ironnote[1] + 1 , ironnote[1] + ironnote[3] - 1))
+			mouse.click(Button.left, 1)
+
+			realmouse.move_mouse_to(random.randrange(cannonTeller[0] + 15 , cannonTeller[0] + cannonTeller[2] - 5) , random.randrange(cannonTeller[1] + 5, cannonTeller[1] + cannonTeller[3] - 5))
+			mouse.click(Button.left, 1)
 		while (not yes):
 			yes = pyautogui.locateOnScreen('Screenshots/yes.png', confidence = .70)
-		if (yes):
+
+		realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
+		mouse.click(Button.left, 1)
+		inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
+		if (not inviron):
 			realmouse.move_mouse_to(random.randrange(yes[0] , yes[0] + yes[2]) , random.randrange(yes[1] + 3 , yes[1] + yes[3]))
 			mouse.click(Button.left, 1)
-		else:
-			print("hi")
+		if (not inviron):
+			logOut()
 
 		
 
 
 
 def main():
+
 	# getMous()
 	# getMous()
 	# minecoal()
@@ -408,7 +424,8 @@ def main():
 	# dropLogs()
 	# mineEss()
 	# string()
-	skillcheck('minning')
+	test()
+	# skillcheck('minning')
 	# cannonBall()
 	# logOut()
 
