@@ -424,10 +424,10 @@ def main():
 	# dropLogs()
 	# mineEss()
 	# string()
-	test()
+	#test()
 	# skillcheck('minning')
-	# cannonBall()
-	# logOut()
+	cannonBall()
+	logOut()
 
 	# mineEss()
 
