@@ -173,14 +173,14 @@ def minecoal():
 		if rock1:
 			realmouse.move_mouse_to(random.randrange(rock1[0] , rock1[0] + rock1[2]) , random.randrange(rock1[1] + 3 , rock1[1] + rock1[3]))
 			mouse.click(Button.left, 1)
-			while(rock1)
+			while(rock1):
 				rock1 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
 
 		rock2 = pyautogui.locateOnScreen('Screenshots/rock2.png', confidence = .70)
 		if rock2:
 			realmouse.move_mouse_to(random.randrange(rock2[0] , rock2[0] + rock2[2]) , random.randrange(rock2[1] + 3 , rock2[1] + rock2[3]))
 			mouse.click(Button.left, 1)
-			while(rock2)
+			while(rock2):
 				rock2 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
 		
 
@@ -188,7 +188,7 @@ def minecoal():
 		if rock3:
 			realmouse.move_mouse_to(random.randrange(rock3[0] , rock3[0] + rock3[2]) , random.randrange(rock3[1] + 3 , rock3[1] + rock3[3]))
 			mouse.click(Button.left, 1)
-			while(rock3)
+			while(rock3):
 				rock3 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
 		
 
@@ -393,7 +393,7 @@ def main():
 
 	# getMous()
 	# getMous()
-	# minecoal()
+	minecoal()
 	# fastminecoal()
 	# dropLogs()
 	# mineEss()
@@ -401,8 +401,8 @@ def main():
 	#test()
 	# skillcheck('minning')
 	# cannonBall()
-	# logOut()
-	train()
+	logOut()
+	#train()
 
 	# mineEss()
 
