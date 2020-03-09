@@ -162,81 +162,35 @@ def string():
 			realmouse.move_mouse_to(x3 , y3)
 			mouse.click(Button.left, 1)
 
-
-
-
-
-
 def minecoal():
 	failures = 0
 	mouse = Controller()
-	im = pyautogui.screenshot()
+	itterations = input("How many itterations: ")
+	for i in range(itterations):
+		if random.randrange(0, 100) == 68:
+				skillcheck('minning')
+		rock1 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
+		if rock1:
+			realmouse.move_mouse_to(random.randrange(rock1[0] , rock1[0] + rock1[2]) , random.randrange(rock1[1] + 3 , rock1[1] + rock1[3]))
+			mouse.click(Button.left, 1)
+			while(rock1)
+				rock1 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
 
-	time.sleep(4 + .0001 * random.randrange(1, 500))
+		rock2 = pyautogui.locateOnScreen('Screenshots/rock2.png', confidence = .70)
+		if rock2:
+			realmouse.move_mouse_to(random.randrange(rock2[0] , rock2[0] + rock2[2]) , random.randrange(rock2[1] + 3 , rock2[1] + rock2[3]))
+			mouse.click(Button.left, 1)
+			while(rock2)
+				rock2 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
+		
 
-
-	input('press enter on rock 1!')
-	rock1_x , rock1_y = int((mouse.position)[0]) , int((mouse.position)[1])
-
-	input('press enter on rock 2!')
-	rock2_x , rock2_y = int((mouse.position)[0]) , int((mouse.position)[1])
-
-	input('press enter on rock 3!')
-	rock3_x , rock3_y = int((mouse.position)[0]) , int((mouse.position)[1])
-	rock1 = (im.getpixel((rock1_y, rock1_x)))
-	rock2 = (im.getpixel((rock2_y, rock2_x)))
-	rock3 = (im.getpixel((rock3_y, rock3_x)))
-
-	print("error checking here!")
-
-
-
-	for itterations in range(5000):
-		failures = 0
-		print("failing")
-		print(pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10))
-		print(im.getpixel((rock1_y, rock1_x)))
-		print(rock1[0], rock1[1], rock1[2])
-		# im = pyautogui.screenshot()
-		if pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10):
-			print("here1")
-			x , y = coalpos(rock1_x , rock1_y)
-			mouse.position = (x, y)
-			time.sleep(.1 + .0001 * random.randrange(1, 500))
-			mouse.click(Button.left, 2)
-			while(pyautogui.pixelMatchesColor(rock1_x, rock1_y, (rock1[0], rock1[1], rock1[2]), tolerance =10)):
-				failures += 1
-				# im = pyautogui.screenshot()
-				if failures % 6 == 0:
-					mouse.click(Button.left, 1)
-
-		failures = 0
-
-		if pyautogui.pixelMatchesColor(rock2_x, rock2_y, (rock2[0], rock2[1], rock2[2]), tolerance =10):
-			x , y = coalpos(rock2_x , rock2_y)
-			mouse.position = (x, y)
-			time.sleep(.1 + .0001 * random.randrange(1, 500))
-			mouse.click(Button.left, 2)
-			while(pyautogui.pixelMatchesColor(rock2_x, rock2_y, (rock2[0], rock2[1], rock2[2]), tolerance =10)):
-				failures += 1
-				# im = pyautogui.screenshot()
-				if failures % 6 == 0:
-					mouse.click(Button.left, 1)
-
-		failures = 0
-
-		if pyautogui.pixelMatchesColor(rock3_x, rock3_y, (rock3[0], rock3[1], rock3[2]), tolerance =10):
-			x , y = coalpos(rock3_x , rock3_y)
-			mouse.position = (x, y)
-			time.sleep(.1 + .0001 * random.randrange(1, 500))
-			mouse.click(Button.left, 2)
-			while(pyautogui.pixelMatchesColor(rock3_x, rock3_y, (rock3[0], rock3[1], rock3[2]), tolerance =20)):
-				failures += 1
-				# im = pyautogui.screenshot()
-				if failures % 6 == 0:
-					mouse.click(Button.left, 1)
-
-		failures = 0
+		rock3 = pyautogui.locateOnScreen('Screenshots/rock3.png', confidence = .70)
+		if rock3:
+			realmouse.move_mouse_to(random.randrange(rock3[0] , rock3[0] + rock3[2]) , random.randrange(rock3[1] + 3 , rock3[1] + rock3[3]))
+			mouse.click(Button.left, 1)
+			while(rock3)
+				rock3 = pyautogui.locateOnScreen('Screenshots/rock1.png', confidence = .70)
+		
 
 def fastminecoal():
 	failures = 0
@@ -332,6 +286,22 @@ def skillcheck(skill):
 def test():
 	inviron = pyautogui.locateOnScreen('Screenshots/inviron.png', confidence = .70)
 	print(inviron)
+
+def train():
+	mouse = Controller()
+	trout = pyautogui.locateOnScreen('Screenshots/trout.png', confidence = .70)
+	while trout:
+		
+		health = pyautogui.locateOnScreen('Screenshots/heart.png', confidence = .90)
+		if health:
+			trout = pyautogui.locateOnScreen('Screenshots/trout.png', confidence = .70)
+			if trout:
+				realmouse.move_mouse_to( random.randrange(trout[0], trout[0] + trout[2]) , random.randrange(trout[1] + 2, trout[1] + trout[3] - 2))
+				mouse.click(Button.left, 1)
+				time.sleep(3 + .0001 * random.randrange(1, 500))
+
+
+	
 
 
 def cannonBall():
@@ -430,8 +400,9 @@ def main():
 	# string()
 	#test()
 	# skillcheck('minning')
-	cannonBall()
-	logOut()
+	# cannonBall()
+	# logOut()
+	train()
 
 	# mineEss()
 
