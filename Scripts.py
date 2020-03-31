@@ -414,74 +414,70 @@ def sandCrabs():
 	mouse = MouseController()
 	print("starting")
 	for i in range(int(input('Please how many cycles: '))):
-		sleepTime = random.randrange(54, 61)
-		for x in range(0, sleepTime):
-			print(sleepTime - x)
-			time.sleep(10)
 
-		step1 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step1.png', confidence = .80)
+		step1 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step1.png', confidence = .70)
 		while not step1:
-			step1 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step1.png', confidence = .80)
+			step1 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step1.png', confidence = .70)
 		pos = clickPos(step1, 3 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
-		step2 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step2.png', confidence = .80)
+		step2 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step2.png', confidence = .70)
 		while not step2:
-			step2 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step2.png', confidence = .80)
+			step2 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step2.png', confidence = .70)
 			print('step2')
 		step2 = [step2[0] , step2[1] , int(step2[2] * .3) , step2[3]]
 		pos = clickPos(step2, 0 , 8)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(6)
+		time.sleep(7)
 
-		farthestPoint = pyautogui.locateOnScreen('Screenshots/sandCrabs/farthestPoint.png', confidence = .80)
+		farthestPoint = pyautogui.locateOnScreen('Screenshots/sandCrabs/farthestPoint.png', confidence = .70)
 		while not farthestPoint:
-			farthestPoint = pyautogui.locateOnScreen('Screenshots/sandCrabs/farthestPoint.png', confidence = .80)
+			farthestPoint = pyautogui.locateOnScreen('Screenshots/sandCrabs/farthestPoint.png', confidence = .70)
 			print('farthestPoint')
-		pos = clickPos(farthestPoint, 10 , 7)
+		pos = clickPos(farthestPoint, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
 		#begin run back
-		step3 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step3.png', confidence = .8)
-		stepThree = pyautogui.locateOnScreen('Screenshots/sandCrabs/stepThree.png', confidence = .8)
+		step3 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step3.png', confidence = .7)
+		stepThree = pyautogui.locateOnScreen('Screenshots/sandCrabs/stepThree.png', confidence = .7)
 		while not step3 and not stepThree:
 			print('step3')
 			step3 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step3.png', confidence = .7)
 			stepThree = pyautogui.locateOnScreen('Screenshots/sandCrabs/stepThree.png', confidence = .7)
 		if step3:
-			pos = clickPos(step3, 6 , 10)
+			pos = clickPos(step3, 10 , 10)
 		else:
-			pos = clickPos(stepThree, 3 , 5)
+			pos = clickPos(stepThree, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(3.5)
+		time.sleep(4.5)
 
-		step4 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step4.png', confidence = .80)
+		step4 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step4.png', confidence = .70)
 		while not step4:
-			step4 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step4.png', confidence = .80)
+			step4 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step4.png', confidence = .70)
 			print('step4')
-		pos = clickPos(step4, 6 , 10)
+		pos = clickPos(step4, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(3.5)
+		time.sleep(4.5)
 
-		step5 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step5.png', confidence = .80)
+		step5 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step5.png', confidence = .70)
 		while not step5:
-			step5 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step5.png', confidence = .80)
-		pos = clickPos(step5, 6 , 6)
+			step5 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step5.png', confidence = .70)
+		pos = clickPos(step5, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
-		step6 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step6.png', confidence = .80)
+		step6 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step6.png', confidence = .70)
 		while not step6:
-			step6 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step6.png', confidence = .80)
-		pos = clickPos(step6, 6 , 6)
+			step6 = pyautogui.locateOnScreen('Screenshots/sandCrabs/step6.png', confidence = .70)
+		pos = clickPos(step6, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(5)
@@ -493,17 +489,22 @@ def sandCrabs():
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 
+		sleepTime = random.randrange(54, 61)
+		for x in range(0, sleepTime):
+			print(sleepTime - x)
+			time.sleep(10)
+
 
 def main():
-	# sandCrabs()
+	sandCrabs()
 	# minecoal()
 	# string()
 	# test()
 	# cooking('tuna')
 	# skillcheck('mining')
-	cannonBall()
+	# cannonBall()
 	# arrowshaft()
-	logOut()
+	# logOut()
 	# train()
 
 main()
