@@ -1,11 +1,13 @@
 from pynput.keyboard import Key, Controller as KeyboardController
 from pynput.mouse import Button, Controller as MouseController
 from Custom_Modules import realmouse
+from threading import Thread
 
 import webbrowser
 import time
 import random
 import pyautogui
+
 
 def logOut():
 	mouse = MouseController()
@@ -494,17 +496,63 @@ def sandCrabs():
 			print(sleepTime - x)
 			time.sleep(10)
 
+def splash():
+	mouse = MouseController()
+	monk1 = pyautogui.locateOnScreen('Screenshots/splash/monk1.png', confidence = .70)
+	monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
+	while True:
+		if monk1:
+			pos = clickPos(monk1, 5 , 8)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		if monk2:
+			pos = clickPos(monk2, 5 , 10)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		
+		time.sleep(1)
+		while not monk2:
+			monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
+			print("here")
+
+		blankSpace = pyautogui.locateOnScreen('Screenshots/splash/blankSpace.png', confidence = .90)
+		pos = clickPos(blankSpace, 5 , 8)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+
+		magicIcon = pyautogui.locateOnScreen('Screenshots/splash/magicIcon.png', confidence = .90)
+		while magicIcon:
+			time.sleep(1)
+			if random.randrange(1, 240) == 68:
+				skillcheck('magic')
+			
+			if random.randrange(1, 120) == 68:
+				monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
+				if monk2:
+					pos = clickPos(monk2, 5 , 10)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
+				pos = clickPos(blankSpace, 5 , 8)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+			print("Casting")
+			magicIcon = pyautogui.locateOnScreen('Screenshots/splash/magicIcon.png', confidence = .90)
+
+def trainMagic():
+	t = Thread(target=splash)
+	t.daemon = True
+	t.start()
+	time.sleep(1200)
 
 def main():
-	sandCrabs()
+	# sandCrabs()
 	# minecoal()
-	# string()
+	# trainMagic()
+	string()
 	# test()
 	# cooking('tuna')
 	# skillcheck('mining')
 	# cannonBall()
 	# arrowshaft()
-	# logOut()
+	logOut()	
 	# train()
 
 main()
