@@ -601,61 +601,29 @@ def test():
 	
 
 def main():
-	# sandCrabs()
-	# minecoal()
-	# trainMagic()
-	# hotWater()
-	string()
-	# test()
-	# cooking('tuna')
-	# skillcheck('mining')
-	# cannonBall()
-	# arrowshaft()
+	script = input("Please Enter which script you would like to run: ")
+	if script == 'sandCrabs':
+		sandCrabs()
+	if script == 'minecoal':
+		minecoal()
+	if script == 'trainMagic':
+		trainMagic()
+	if script == 'hotWater':
+		hotWater()
+	if script == 'string':
+		string()
+	if script == 'cooking':
+		cooking('tuna')
+	if script == 'mining':
+		skillcheck('mining')
+	if script == 'cannonBall':
+		cannonBall()
+	if script == 'arrowshaft':
+		arrowshaft()
+	else:
+		test()
 	logOut()	
-	# train()
 
 main()
-
-
-
-
-# def hotWater():
-# 	mouse = MouseController()
-# 	hot_water_bank = pyautogui.locateOnScreen('Screenshots/hotWater/hotWaterBank.png', confidence = .90)
-# 	empty_cup_bank = pyautogui.locateOnScreen('Screenshots/hotWater/emptyCupBank.png', confidence = .90)
-# 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
-# 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
-
-# 	while True:
-# 		pos = clickPos(close_bank, 4 , 4)
-# 		realmouse.move_mouse_to(pos[0] , pos[1])
-# 		mouse.click(Button.left, 1)
-# 		time.sleep(1)
-# 		empty_cup_inv = list(pyautogui.locateAllOnScreen('Screenshots/hotWater/emptyCupInv.png', confidence = .70))
-# 		hot_water_inv = list(pyautogui.locateAllOnScreen('Screenshots/hotWater/hotWaterInv.png', confidence = .70))
-# 		cups = {}
-# 		bowls = {}
-# 		for i in range(14):
-# 			cups[i] = empty_cup_inv[i]
-# 			bowls[i] = hot_water_inv[i]
-
-# 		for i in range(14):
-# 			cup = random.choice(list(cups.keys()))
-# 			water = random.choice(list(bowls.keys()))
-			
-# 			empty_cup_inv.remove(cup)
-# 			hot_water_inv.remove(water)
-# 			time.sleep(1)
-
-# 			pos = clickPos(cup, 4 , 4)
-# 			realmouse.move_mouse_to(pos[0] , pos[1])
-# 			mouse.click(Button.left, 1)
-
-# 			pos = clickPos(water, 4 , 4)
-# 			realmouse.move_mouse_to(pos[0] , pos[1])
-# 			mouse.click(Button.left, 1)
-# 		time.sleep(10)
-
-
 	
 
