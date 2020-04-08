@@ -600,9 +600,14 @@ def ranarr():
 
 	input('press enter when bank tab is opened')
 
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
 	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmyRanarrBank.png', confidence = .90)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
 
 	while True:
 		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
@@ -638,11 +643,15 @@ def potion():
 	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
 
 	input('press enter when bank tab is opened')
-
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	cleanRanarrBank = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarr.png', confidence = .98)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+	
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
 
 	while True:
 		pos = clickPos(waterVialBank, 4 , 4)
