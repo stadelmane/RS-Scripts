@@ -592,6 +592,108 @@ def hotWater():
 		mouse.click(Button.left, 1)
 
 
+def ranarr():
+	mouse = MouseController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+
+	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmyRanarrBank.png', confidence = .90)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+
+	while True:
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1)
+		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .90))
+		for i in range(28):
+			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+		time.sleep(2)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+def potion():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+
+	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
+	cleanRanarrBank = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarr.png', confidence = .95)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+
+	while True:
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(.5)
+		cleanRanarrInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/cleanRanarrInv.png', confidence = .90))
+		waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+			
+		ranarr = random.choice(cleanRanarrInv)
+		vial = random.choice(waterVialInv)
+			
+
+		pos = clickPos(ranarr, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(vial, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press(' ')
+			keyboard.release(' ')
+		else:
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press('1')
+			keyboard.release('1')
+
+		time.sleep(9)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		time.sleep(.5)
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(waterVialBank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(cleanRanarrBank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
 
 
 def test():
@@ -620,6 +722,10 @@ def main():
 		cannonBall()
 	if script == 'arrowshaft':
 		arrowshaft()
+	if script == 'ranarr':
+		ranarr()
+	if script == 'potion':
+		potion()
 	else:
 		test()
 	logOut()	
