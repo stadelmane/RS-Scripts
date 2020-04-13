@@ -11,7 +11,7 @@ import pyautogui
 
 def logOut():
 	mouse = MouseController()
-
+	print("starting logout!")
 	log = pyautogui.locateOnScreen('Screenshots/logout/log.png' , confidence = .9)
 	print(log)
 	if log:
@@ -494,7 +494,11 @@ def splash():
 	mouse = MouseController()
 	monk1 = pyautogui.locateOnScreen('Screenshots/splash/monk1.png', confidence = .70)
 	monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
+	blankSpace = pyautogui.locateOnScreen('Screenshots/splash/blankSpace.png', confidence = .70)
 	while True:
+		monk1, monk2 = None, None
+		monk1 = pyautogui.locateOnScreen('Screenshots/splash/monk1.png', confidence = .70)
+		monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
 		if monk1:
 			pos = clickPos(monk1, 5 , 8)
 			realmouse.move_mouse_to(pos[0] , pos[1])
@@ -503,23 +507,17 @@ def splash():
 			pos = clickPos(monk2, 5 , 10)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
-		
 		time.sleep(1)
-		while not monk2:
-			monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
-			print("here")
-
-		blankSpace = pyautogui.locateOnScreen('Screenshots/splash/blankSpace.png', confidence = .90)
 		pos = clickPos(blankSpace, 5 , 8)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 
 		magicIcon = pyautogui.locateOnScreen('Screenshots/splash/magicIcon.png', confidence = .90)
 		while magicIcon:
 			time.sleep(1)
-			if random.randrange(1, 240) == 68:
+			if random.randrange(1, 140) == 68:
 				skillcheck('magic')
 			
-			if random.randrange(1, 120) == 68:
+			if random.randrange(1, 30) == 25:
 				monk2 = pyautogui.locateOnScreen('Screenshots/splash/monk2.png', confidence = .70)
 				if monk2:
 					pos = clickPos(monk2, 5 , 10)
@@ -534,7 +532,7 @@ def trainMagic():
 	t = Thread(target=splash)
 	t.daemon = True
 	t.start()
-	time.sleep(1200)
+	time.sleep(4500)
 
 
 def hotWater():
@@ -608,8 +606,8 @@ def ranarr():
 	pos = clickPos(quantity, 2 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
-
-	while True:
+	notDone = True
+	while notDone:
 		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
@@ -618,8 +616,10 @@ def ranarr():
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(1)
-		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .90))
-		for i in range(28):
+		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .97))
+		if len(grimmy_ranarr_inv) < 28:
+			notDone = False
+		for i in range(len(grimmy_ranarr_inv)):
 			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
@@ -703,11 +703,181 @@ def potion():
 		time.sleep(.5)
 		mouse.click(Button.left, 1)
 
+
+
+def ranarrPotion():
+	mouse = MouseController()
+	keyboard = KeyboardController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
+	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmyRanarrBank.png', confidence = .90)
+	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	notDone = True
+	while notDone:
+		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(waterVialBank, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1)
+
+		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .97))
+		waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+			
+
+		if len(grimmy_ranarr_inv) < 14:
+			notDone = False
+		for i in range(len(grimmy_ranarr_inv)):
+			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+		ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
+		vial = random.choice(waterVialInv)
+		pos = clickPos(ranarr, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(vial, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		
+		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press(' ')
+			keyboard.release(' ')
+		else:
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press('1')
+			keyboard.release('1')
+		time.sleep(9)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+		time.sleep(.75)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
 def test():
 	mouse = MouseController()
 	empty_cup_inv = list(pyautogui.locateAllOnScreen('Screenshots/hotWater/emptyCupInv.png', confidence = .90))
 	print(len(empty_cup_inv))
+
+
+def fireMaking():
+	mouse = MouseController()
+	keyboard = KeyboardController()
+
+	tele = pyautogui.locateOnScreen('Screenshots/tele/varrock.png', confidence = .80)
+	tinderBox = pyautogui.locateOnScreen('Screenshots/fireMaking/tinderBox.png', confidence = .80)
+	notedLogs = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/notedLogs.png', confidence = .90))
+
 	
+	while notedLogs:
+		yes = None
+		lit = None
+		time.sleep(1)
+		logs = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/logs.png', confidence = .80))
+		print(len(logs))
+		notedLogs = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/notedLogs.png', confidence = .90))
+		pos = clickPos(tele, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(4)
+		spot1 = pyautogui.locateOnScreen('Screenshots/fireMaking/spot1.png', confidence = .70)
+		spot2 = pyautogui.locateOnScreen('Screenshots/fireMaking/spot2.png', confidence = .70)
+		spot3 = pyautogui.locateOnScreen('Screenshots/fireMaking/spot3.png', confidence = .70)
+		if spot1:
+			pos = clickPos(spot1, 10 , 10)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		elif spot2:
+			pos = clickPos(spot2, 10 , 10)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		elif spot3:
+			pos = clickPos(spot3, 10 , 10)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		else:
+			print("Couldn't find spot to begin")
+			# logout()
+		time.sleep(1)
+
+		for i in range(len(logs)):
+			lit = None
+			log = random.choice(logs)
+			logs.remove(log)
+			pos = clickPos(tinderBox, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			pos = clickPos(log, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .85)
+			time.sleep(2)
+			counter = 1
+			while not lit:
+				counter +=1
+				lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .80)
+				time.sleep(.1)
+				if counter % 50 == 0:
+					pos = clickPos(tinderBox, 4 , 4)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
+					pos = clickPos(log, 4 , 4)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
+
+		notedLogs = pyautogui.locateOnScreen('Screenshots/fireMaking/notedLogs.png', confidence = .80)
+		pos = clickPos(notedLogs, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		bank = pyautogui.locateOnScreen('Screenshots/fireMaking/bank.png', confidence = .70)
+		bank2 = pyautogui.locateOnScreen('Screenshots/fireMaking/bank2.png', confidence = .70)
+		if bank:
+			pos = clickPos(bank, 2 , 3)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		elif bank2:
+			pos = clickPos(bank2, 5 , 5)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		else:
+			print("Couldn't find bank")
+
+		while (not yes):
+			yes = pyautogui.locateOnScreen('Screenshots/cannonBalls/yes.png', confidence = .70)
+
+		keyboard.press('1')
+		keyboard.release('1')
+
+
+
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -730,12 +900,15 @@ def main():
 	if script == 'arrowshaft':
 		arrowshaft()
 	if script == 'ranarr':
-		ranarr()
-	if script == 'potion':
 		potion()
+		ranarr()
+	if script == 'ranarrPotion':
+		ranarrPotion()
+	if script == 'fire':
+		fireMaking()
 	else:
 		test()
-	logOut()	
+	# logOut()	
 
 main()
 	
