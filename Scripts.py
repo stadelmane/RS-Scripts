@@ -805,6 +805,11 @@ def fireMaking():
 		pos = clickPos(tele, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
+		toggle = pyautogui.locateOnScreen('Screenshots/fireMaking/toggleOn.png', confidence = .90)
+		if toggle:
+			pos = clickPos(toggle, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
 		time.sleep(4)
 		spot1 = pyautogui.locateOnScreen('Screenshots/fireMaking/spot1.png', confidence = .70)
 		spot2 = pyautogui.locateOnScreen('Screenshots/fireMaking/spot2.png', confidence = .70)
@@ -823,8 +828,8 @@ def fireMaking():
 			mouse.click(Button.left, 1)
 		else:
 			print("Couldn't find spot to begin")
-			# logout()
-		time.sleep(1)
+			logOut()
+		time.sleep(2)
 
 		for i in range(len(logs)):
 			lit = None
@@ -856,11 +861,15 @@ def fireMaking():
 		pos = clickPos(notedLogs, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
+		toggle = pyautogui.locateOnScreen('Screenshots/fireMaking/toggleOff.png', confidence = .90)
+		pos = clickPos(toggle, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
 
-		bank = pyautogui.locateOnScreen('Screenshots/fireMaking/bank.png', confidence = .70)
+		bank = pyautogui.locateOnScreen('Screenshots/fireMaking/bank.png', confidence = .65)
 		bank2 = pyautogui.locateOnScreen('Screenshots/fireMaking/bank2.png', confidence = .70)
 		if bank:
-			pos = clickPos(bank, 2 , 3)
+			pos = clickPos(bank, 3 , 3)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 		elif bank2:
@@ -869,9 +878,25 @@ def fireMaking():
 			mouse.click(Button.left, 1)
 		else:
 			print("Couldn't find bank")
+			logOut()
 
+		counter=1
 		while (not yes):
+			counter+= 1
 			yes = pyautogui.locateOnScreen('Screenshots/cannonBalls/yes.png', confidence = .70)
+			if counter % 20 == 0:
+				notedLogs = pyautogui.locateOnScreen('Screenshots/fireMaking/notedLogs.png', confidence = .80)
+				pos = clickPos(notedLogs, 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
+				if bank:
+					pos = clickPos(bank, 3 , 3)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
+				elif bank2:
+					pos = clickPos(bank2, 5 , 5)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
 
 		keyboard.press('1')
 		keyboard.release('1')
