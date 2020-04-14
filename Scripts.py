@@ -843,7 +843,7 @@ def fireMaking():
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 			lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .85)
-			time.sleep(2)
+			time.sleep(1.3)
 			counter = 1
 			while not lit:
 				counter +=1
