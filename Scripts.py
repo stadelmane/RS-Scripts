@@ -343,6 +343,7 @@ def cooking(food):
 
 		# for i in range(45):
 		cooked = False
+		lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
 		while not lvlUp and not cooked:
 			print(i)
 			time.sleep(1)
