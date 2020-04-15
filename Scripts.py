@@ -341,17 +341,24 @@ def cooking(food):
 		keyboard.press('1')
 		keyboard.release('1')
 
-		for i in range(45):
+		# for i in range(45):
+		cooked = False
+		while not lvlUp and not cooked:
 			print(i)
 			time.sleep(1)
 			lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
+			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
+			if len(fishies) == 0:
+				cooked = True
 			if lvlUp:
 				pos = clickPos(lvlUp, 2 , 1)
 				realmouse.move_mouse_to(pos[0] , pos[1])
 				mouse.click(Button.left, 1)
-				lvlUp = None
+
 				pos = clickPos(fire, 0 , 0)
 				realmouse.move_mouse_to(pos[0] , pos[1])
+				time.sleep(1)
+				lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
 
 		bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .80)
 		while not bank:
