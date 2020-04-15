@@ -348,7 +348,8 @@ def cooking(food):
 			print(i)
 			time.sleep(1)
 			lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
-			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
+			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .95))
+			print(len(fishies))
 			if len(fishies) == 0:
 				cooked = True
 			if lvlUp:
