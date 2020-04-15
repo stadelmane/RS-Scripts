@@ -847,8 +847,7 @@ def fireMaking():
 			counter = 1
 			while not lit:
 				counter +=1
-				lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .80)
-				time.sleep(.1)
+				lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .90)
 				if counter % 50 == 0:
 					pos = clickPos(tinderBox, 4 , 4)
 					realmouse.move_mouse_to(pos[0] , pos[1])
