@@ -353,14 +353,16 @@ def cooking(food):
 			if len(fishies) == 0:
 				cooked = True
 			if lvlUp:
-				pos = clickPos(lvlUp, 2 , 1)
-				realmouse.move_mouse_to(pos[0] , pos[1])
-				mouse.click(Button.left, 1)
+				while lvlUp:
+					pos = clickPos(lvlUp, 2 , 1)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					mouse.click(Button.left, 1)
 
-				pos = clickPos(fire, 0 , 0)
-				realmouse.move_mouse_to(pos[0] , pos[1])
-				time.sleep(1)
-				lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
+					pos = clickPos(fire, 0 , 0)
+					realmouse.move_mouse_to(pos[0] , pos[1])
+					time.sleep(3)
+					lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
+				lvlUp = True
 
 		bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .80)
 		while not bank:
