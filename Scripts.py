@@ -928,6 +928,74 @@ def fireMaking():
 		keyboard.press('1')
 		keyboard.release('1')
 
+def pizza():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
+	pizzaBank = pyautogui.locateOnScreen('Screenshots/pizza/pizzaBank.png', confidence = .85)
+	pineappleBank = pyautogui.locateOnScreen('Screenshots/pizza/pineappleBank.png', confidence = .85)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .85)
+	
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	while True:
+		pos = clickPos(pizzaBank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(pineappleBank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(.5)
+		pizzaInv = list(pyautogui.locateAllOnScreen('Screenshots/pizza/pizzaInv.png', confidence = .85))
+		pineappleInv = list(pyautogui.locateAllOnScreen('Screenshots/pizza/pineappleInv.png', confidence = .85))
+			
+		pizza = random.choice(pizzaInv)
+		pineapple = random.choice(pineappleInv)
+			
+		with keyboard.pressed(Key.shift):
+			pos = clickPos(pizza, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			pos = clickPos(pineapple, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press(' ')
+			keyboard.release(' ')
+		else:
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press('1')
+			keyboard.release('1')
+
+		time.sleep(17)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		time.sleep(.5)
+		mouse.click(Button.left, 1)
+
 
 
 
@@ -951,9 +1019,8 @@ def main():
 		cannonBall()
 	if script == 'arrowshaft':
 		arrowshaft()
-	if script == 'ranarr':
-		potion()
-		ranarr()
+	if script == 'pizza':
+		pizza()
 	if script == 'ranarrPotion':
 		ranarrPotion()
 	if script == 'fire':
