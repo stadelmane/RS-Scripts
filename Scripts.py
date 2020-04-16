@@ -341,15 +341,12 @@ def cooking(food):
 		keyboard.press('1')
 		keyboard.release('1')
 
-		# for i in range(45):
 		cooked = False
 		lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
 		while not lvlUp and not cooked:
 			time.sleep(1)
 			lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
 			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
-			print(len(fishies))
-			print("Here!")
 			if len(fishies) == 0:
 				cooked = True
 			if lvlUp:
