@@ -9,6 +9,7 @@ import random
 import pyautogui
 
 
+
 def logOut():
 	mouse = MouseController()
 	print("starting logout!")
@@ -810,9 +811,8 @@ def ranarrPotion():
 
 def test():
 	mouse = MouseController()
-	empty_cup_inv = list(pyautogui.locateAllOnScreen('Screenshots/hotWater/emptyCupInv.png', confidence = .90))
-	print(len(empty_cup_inv))
-
+	keyboard = KeyboardController()
+	print("\a")
 
 def fireMaking():
 	mouse = MouseController()
@@ -859,6 +859,7 @@ def fireMaking():
 			logOut()
 		time.sleep(2)
 
+		endScript = 0
 		for i in range(len(logs)):
 			lit = None
 			log = random.choice(logs)
@@ -870,19 +871,42 @@ def fireMaking():
 			pos = clickPos(log, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
-			lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .85)
-			time.sleep(1.3)
-			counter = 1
-			while not lit:
-				counter +=1
-				lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .90)
-				if counter % 50 == 0:
-					pos = clickPos(tinderBox, 4 , 4)
-					realmouse.move_mouse_to(pos[0] , pos[1])
-					mouse.click(Button.left, 1)
-					pos = clickPos(log, 4 , 4)
-					realmouse.move_mouse_to(pos[0] , pos[1])
-					mouse.click(Button.left, 1)
+			print(lit)
+			time.sleep(1.25)
+			failures = 0
+			logs2 = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/logs.png', confidence = .80))
+			while len(logs) != len(logs2):
+				failures += 1
+				logs2 = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/logs.png', confidence = .80))
+				pos = clickPos(tinderBox, 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
+				pos = clickPos(log, 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
+				time.sleep(1)
+				if failures == 3:
+					endScript += 1
+					logs2 = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/logs.png', confidence = .80))
+					logs = list(pyautogui.locateAllOnScreen('Screenshots/fireMaking/logs.png', confidence = .80))
+				if endScript == 3:
+					logOut()
+					quit()
+
+
+
+			# lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .85)
+			# counter = 1
+			# while not lit:
+			# 	counter +=1
+			# 	lit = pyautogui.locateOnScreen('Screenshots/fireMaking/lit.png', confidence = .90)
+			# 	if counter % 50 == 0:
+			# 		pos = clickPos(tinderBox, 4 , 4)
+			# 		realmouse.move_mouse_to(pos[0] , pos[1])
+			# 		mouse.click(Button.left, 1)
+			# 		pos = clickPos(log, 4 , 4)
+			# 		realmouse.move_mouse_to(pos[0] , pos[1])
+			# 		mouse.click(Button.left, 1)
 
 		notedLogs = pyautogui.locateOnScreen('Screenshots/fireMaking/notedLogs.png', confidence = .80)
 		pos = clickPos(notedLogs, 4 , 4)
@@ -999,6 +1023,152 @@ def pizza():
 
 
 
+def varrockAgility():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+	for i in range(int(input('Please how many cycles: '))):
+
+		roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .70)
+		roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .70)
+		while not roof1 and not roof1R:
+			roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .70)
+			roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .70)
+			print("roof1")
+		if roof1R:
+			print("\a")
+			pos = clickPos(roof1R, 10 , 7)
+		else:
+			pos = clickPos(roof1, 10 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(8)
+
+		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
+		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
+		while not roof2 and not roof2R:
+			roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
+			roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
+			print("roof2")
+		if roof2R:
+			print("\a")
+			pos = clickPos(roof2R, 10 , 7)
+		else:
+			pos = clickPos(roof2, 10 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(8)
+
+
+		roof3 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3.png', confidence = .70)
+		roof3R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3R.png', confidence = .70)
+		while not roof3 and not roof3R:
+			roof3 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3.png', confidence = .70)
+			roof3R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3R.png', confidence = .70)
+			print("roof3")
+		if roof3R:
+			print("\a")
+			pos = clickPos(roof3R, 10 , 7)
+		else:
+			pos = clickPos(roof3, 7 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(12)
+
+		roof4 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4.png', confidence = .70)
+		roof4R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4R.png', confidence = .70)
+		while not roof4 and not roof4R:
+			roof4 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4.png', confidence = .70)
+			roof4R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4R.png', confidence = .70)
+			print("roof4")
+		if roof4R:
+			print("\a")
+			pos = clickPos(roof4R, 10 , 7)
+		else:
+			pos = clickPos(roof4, 10 , 10)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
+
+		roof5 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5.png', confidence = .70)
+		roof5R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5R.png', confidence = .70)
+		while not roof5 and not roof5R:
+			roof5 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5.png', confidence = .70)
+			roof5R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5R.png', confidence = .70)
+			print("roof5")
+		if roof5R:
+			print("\a")
+			pos = clickPos(roof5R, 10 , 7)
+		else:
+			pos = clickPos(roof5, 7 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(8)
+
+
+		roof6 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6.png', confidence = .70)
+		roof6R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6R.png', confidence = .70)
+		while not roof6 and not roof6R:
+			roof6 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6.png', confidence = .70)
+			roof6R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6R.png', confidence = .70)
+			print("roof6")
+		if roof6R:
+			print("\a")
+			pos = clickPos(roof6R, 10 , 7)
+		else:
+			pos = clickPos(roof6, 12 , 10)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(6.5)
+
+		roof7 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7.png', confidence = .70)
+		roof7R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7R.png', confidence = .70)
+		while not roof7 and not roof7R:
+			roof7 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7.png', confidence = .70)
+			roof7R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7R.png', confidence = .70)
+			print("roof7")
+		if roof7R:
+			print("\a")
+			pos = clickPos(roof7R, 10 , 7)
+		else:
+			pos = clickPos(roof7, 7 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(6)
+
+		roof8 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8.png', confidence = .70)
+		roof8R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8R.png', confidence = .70)
+		while not roof8 and not roof8R:
+			roof8 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8.png', confidence = .70)
+			roof8R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8R.png', confidence = .70)
+			print("roof8")
+		if roof8R:
+			print("\a")
+			pos = clickPos(roof8R, 10 , 7)
+		else:
+			pos = clickPos(roof8, 7 , 7)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
+
+		restart = pyautogui.locateOnScreen('Screenshots/varrockAgility/restart.png', confidence = .70)
+		restartR = pyautogui.locateOnScreen('Screenshots/varrockAgility/restartR.png', confidence = .70)
+		while not restart and not restartR:
+			restart = pyautogui.locateOnScreen('Screenshots/varrockAgility/restart.png', confidence = .70)
+			restartR = pyautogui.locateOnScreen('Screenshots/varrockAgility/restartR.png', confidence = .70)
+		if restartR:
+			print("\a")
+			pos = clickPos(restartR, 10 , 7)
+		else:
+			pos = clickPos(restart, 7 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(10)
+
+
+
+
+
+
 def main():
 	script = input("Please Enter which script you would like to run: ")
 	if script == 'sandCrabs':
@@ -1025,9 +1195,11 @@ def main():
 		ranarrPotion()
 	if script == 'fire':
 		fireMaking()
+	if script == 'agile':
+		varrockAgility()
 	else:
 		test()
-	logOut()	
+	# logOut()	
 
 main()
 	
