@@ -301,6 +301,21 @@ def cooking(food):
 	keyboard = KeyboardController()
 	mouse = MouseController()
 	failures = 0
+	
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	bankFish = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Bank.png', confidence = .90)
+	pos = clickPos(bankFish, 3 , 5)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	closeBank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	pos = clickPos(closeBank, 3 , 5)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
 
 	fire = pyautogui.locateOnScreen('Screenshots/cooking/fire.png', confidence = .80)
 	while not fire:
@@ -311,80 +326,9 @@ def cooking(food):
 
 	itterations = input("Enter how many itterations: ")
 
-	fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
-	fish = random.choice(fishies)
-	pos = clickPos(fish , 4 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-	
-	pos = clickPos(fire, 5 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-
-	failures = 1
-	start = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Start.png', confidence = .80)
-	while not start:
-		start = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Start.png', confidence = .80)
-		failures += 1
-		if failures % 20 == 0:
-			pos = clickPos(fish , 4 , 5)
-			realmouse.move_mouse_to(pos[0] , pos[1])
-			mouse.click(Button.left, 1)
-
-			pos = clickPos(fire, 0 , 0)
-			realmouse.move_mouse_to(pos[0] , pos[1])
-			mouse.click(Button.left, 1)
-
-	keyboard.press('1')
-	keyboard.release('1')
-
-	cooked = False
-	lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
-	while not lvlUp and not cooked:
-		time.sleep(1)
-		lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
-		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
-		if len(fishies) == 0:
-			cooked = True
-		if lvlUp:
-			while lvlUp:
-				pos = clickPos(lvlUp, 2 , 1)
-				realmouse.move_mouse_to(pos[0] , pos[1])
-				mouse.click(Button.left, 1)
-
-				pos = clickPos(fire, 0 , 0)
-				realmouse.move_mouse_to(pos[0] , pos[1])
-				time.sleep(3)
-				lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
-			lvlUp = True
-
-	bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .80)
-	while not bank:
-		bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .77)
-		print("cant find bank")
-	pos = clickPos(bank, 5 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-
-	emptyInv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .90)
-	while not emptyInv:
-		emptyInv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .90)
-	pos = clickPos(emptyInv, 3 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-	time.sleep(2)
-	bankFish = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Bank.png', confidence = .99)
-	pos = clickPos(bankFish, 3 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-
-	closeBank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
-	pos = clickPos(closeBank, 3 , 5)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-
-	#Continue to loop on set variables
 	for i in range(int(itterations)):
+
+		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
 		fish = random.choice(fishies)
 		pos = clickPos(fish , 4 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
@@ -431,6 +375,10 @@ def cooking(food):
 					lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
 				lvlUp = True
 
+		bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .80)
+		while not bank:
+			bank = pyautogui.locateOnScreen('Screenshots/cooking/bank.png', confidence = .77)
+			print("cant find bank")
 		pos = clickPos(bank, 5 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
@@ -446,7 +394,6 @@ def cooking(food):
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 
-		closeBank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 		pos = clickPos(closeBank, 3 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
