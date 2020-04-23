@@ -301,6 +301,7 @@ def cooking(food):
 	keyboard = KeyboardController()
 	mouse = MouseController()
 	failures = 0
+	itterations = input("Enter how many itterations: ")
 
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
 	pos = clickPos(quantity, 2 , 2)
@@ -324,9 +325,8 @@ def cooking(food):
 		if failures > 10:
 			print("Couldn't find fire")
 
-	itterations = input("Enter how many itterations: ")
-
 	for i in range(int(itterations)):
+		print("round: " + i)
 
 		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
 		while not fishies:
@@ -1052,7 +1052,7 @@ def varrockAgility():
 			pos = clickPos(roof1, 10 , 7)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(8)
+		time.sleep(8.5)
 
 		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
 		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
@@ -1062,9 +1062,9 @@ def varrockAgility():
 			print("roof2")
 		if roof2R:
 			print("\a")
-			pos = clickPos(roof2R, 10 , 7)
+			pos = clickPos(roof2R, 13 , 7)
 		else:
-			pos = clickPos(roof2, 10 , 7)
+			pos = clickPos(roof2, 13 , 7)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(8)
