@@ -1074,9 +1074,9 @@ def varrockAgility():
 			print("roof2")
 		if roof2R:
 			print("\a")
-			pos = clickPos(roof2R, 3 , 3)
+			pos = clickPos(roof2R, 7 , 3)
 		else:
-			pos = clickPos(roof2, 3 , 3)
+			pos = clickPos(roof2, 7 , 3)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(8)
