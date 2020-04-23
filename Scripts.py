@@ -329,7 +329,7 @@ def cooking(food):
 	for i in range(int(itterations)):
 
 		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
-		if not fishies:
+		while not fishies:
 			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
 		fish = random.choice(fishies)
 		pos = clickPos(fish , 4 , 5)
