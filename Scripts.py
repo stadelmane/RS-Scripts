@@ -301,7 +301,7 @@ def cooking(food):
 	keyboard = KeyboardController()
 	mouse = MouseController()
 	failures = 0
-	
+
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
 	pos = clickPos(quantity, 2 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
@@ -329,6 +329,8 @@ def cooking(food):
 	for i in range(int(itterations)):
 
 		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
+		if len(fishies) != 28:
+			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
 		fish = random.choice(fishies)
 		pos = clickPos(fish , 4 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
