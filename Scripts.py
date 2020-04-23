@@ -375,7 +375,7 @@ def cooking(food):
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 
-		bankFish = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Bank.png', confidence = .90)
+		bankFish = pyautogui.locateOnScreen('Screenshots/cooking/' + food + 'Bank.png', confidence = .97)
 		pos = clickPos(fish, 3 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
