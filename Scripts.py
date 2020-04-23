@@ -825,7 +825,19 @@ def ranarrPotion():
 def test():
 	mouse = MouseController()
 	keyboard = KeyboardController()
-	print("\a")
+
+	roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
+	roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
+	while not roof2 and not roof2R:
+		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
+		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
+		print("roof2")
+	if roof2R:
+		print("\a")
+		pos = clickPos(roof2R, 3 , 3)
+	else:
+		pos = clickPos(roof2, 3 , 3)
+	realmouse.move_mouse_to(pos[0] , pos[1])
 
 def fireMaking():
 	mouse = MouseController()
@@ -1039,11 +1051,11 @@ def varrockAgility():
 	mouse = MouseController()
 	for i in range(int(input('Please how many cycles: '))):
 
-		roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .70)
-		roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .70)
+		roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .85)
+		roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .85)
 		while not roof1 and not roof1R:
-			roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .70)
-			roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .70)
+			roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .80)
+			roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .80)
 			print("roof1")
 		if roof1R:
 			print("\a")
@@ -1054,17 +1066,17 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(8.5)
 
-		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
-		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
+		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
+		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
 		while not roof2 and not roof2R:
 			roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
 			roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
 			print("roof2")
 		if roof2R:
 			print("\a")
-			pos = clickPos(roof2R, 5 , 5)
+			pos = clickPos(roof2R, 3 , 3)
 		else:
-			pos = clickPos(roof2, 10 , 7)
+			pos = clickPos(roof2, 3 , 3)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(8)
@@ -1173,7 +1185,7 @@ def varrockAgility():
 			pos = clickPos(restart, 7 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(10)
+		time.sleep(11)
 
 def nmz():
 	keyboard = KeyboardController()
