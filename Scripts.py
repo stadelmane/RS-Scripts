@@ -326,7 +326,7 @@ def cooking(food):
 			print("Couldn't find fire")
 
 	for i in range(int(itterations)):
-		print("round: " + i)
+		print("round: " , i)
 
 		fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
 		while not fishies:
@@ -1105,7 +1105,7 @@ def varrockAgility():
 			print("roof4")
 		if roof4R:
 			print("\a")
-			pos = clickPos(roof4R, 10 , 7)
+			pos = clickPos(roof4R, 25 , 7)
 		else:
 			pos = clickPos(roof4, 10 , 10)
 		realmouse.move_mouse_to(pos[0] , pos[1])
