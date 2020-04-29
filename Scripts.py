@@ -362,7 +362,7 @@ def cooking(food):
 		while not lvlUp and not cooked:
 			time.sleep(1)
 			lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
-			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .90))
+			fishies = list(pyautogui.locateAllOnScreen('Screenshots/cooking/' + food + 'Inv.png', confidence = .98))
 			if len(fishies) == 0:
 				cooked = True
 			if lvlUp:
@@ -826,18 +826,16 @@ def test():
 	mouse = MouseController()
 	keyboard = KeyboardController()
 
-	roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
-	roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
-	while not roof2 and not roof2R:
-		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
-		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
-		print("roof2")
-	if roof2R:
-		print("\a")
-		pos = clickPos(roof2R, 3 , 3)
-	else:
-		pos = clickPos(roof2, 3 , 3)
-	realmouse.move_mouse_to(pos[0] , pos[1])
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+	while True:
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+
+		time.sleep(random.randrange(20, 35))
+	
+
+
 
 def fireMaking():
 	mouse = MouseController()
@@ -1214,7 +1212,7 @@ def main():
 	if script == 'string':
 		string()
 	if script == 'cooking':
-		cooking('lobster')
+		cooking('swordfish')
 	if script == 'mining':
 		skillcheck('mining')
 	if script == 'cannonBall':
@@ -1233,7 +1231,7 @@ def main():
 		nmz()
 	else:
 		test()
-	# logOut()	
+	logOut()	
 
 main()
 	
