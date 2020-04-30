@@ -1198,6 +1198,60 @@ def nmz():
 		mouse.click(Button.left, 1)
 
 
+def salt():
+	mouse = MouseController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+
+
+	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/saltBank.png', confidence = .90)
+	bucket_bank = pyautogui.locateOnScreen('Screenshots/bucketBank.png', confidence = .90)
+
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+
+	notDone = True
+	while notDone:
+		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(bucket_bank, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1)
+		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/saltInv.png', confidence = .97))
+		buckets = list(pyautogui.locateAllOnScreen('Screenshots/bucketInv.png', confidence = .80))
+		if len(grimmy_ranarr_inv) < 14:
+			notDone = False
+		for i in range(len(grimmy_ranarr_inv)):
+			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			pos = clickPos(buckets[i], 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+		time.sleep(2)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1229,6 +1283,8 @@ def main():
 		varrockAgility()
 	if script == 'nmz':
 		nmz()
+	if script == 'salt':
+		salt()
 	else:
 		test()
 	logOut()	
