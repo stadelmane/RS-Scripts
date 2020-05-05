@@ -1190,12 +1190,61 @@ def nmz():
 	mouse = MouseController()
 	overload = list(pyautogui.locateAllOnScreen('Screenshots/nmz/overload.png', confidence = .96))
 	absorptions = list(pyautogui.locateAllOnScreen('Screenshots/nmz/absorption.png', confidence = .96))
+	prayer = pyautogui.locateOnScreen('Screenshots/nmz/prayer.png', confidence = .70)
 	print(len(absorptions))
+	total_time = 300
 
+	overload1 = overload
+	overload2 = overload
+	overload3 = overload
+	overload4 = overload
+	while True:
+		time_to_sleep = random.randrange(15, 40)
+		print(total_time + time_to_sleep)
+		if total_time + time_to_sleep > 300:
+			
+			time.sleep(301 - total_time)
+			pos = clickPos(prayer, 3 , 3)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			time.sleep(.5)
+			mouse.click(Button.left, 1)
 
-	with keyboard.pressed(Key.shift):
-		time.sleep(6)
+			overloadPot = random.choice(overload4)
+
+			pos = clickPos(overloadPot, 3 , 3)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			total_time = 0
+
+		else:
+			total_time += time_to_sleep + .5
+			time.sleep(time_to_sleep)
+			pos = clickPos(prayer, 3 , 3)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			time.sleep(random.randrange(2 , 4) * .1)
+			mouse.click(Button.left, 1)
+
+def alch():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+	# magebook = pyautogui.locateOnScreen('Screenshots/alch/magebook.png', confidence = .70)
+	while overload:
+		magebookRed = None
+		while not magebookRed:
+			magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
+			time.sleep(1)
+	
 		mouse.click(Button.left, 1)
+		time.sleep(random.randrange(100, 500) * .001)
+		mouse.click(Button.left, 1)
+
+
+
+
+	pass
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1227,9 +1276,11 @@ def main():
 		varrockAgility()
 	if script == 'nmz':
 		nmz()
+	if script == 'alch':
+		alch()
 	else:
 		test()
-	logOut()	
+	# logOut()	
 
 main()
 	
