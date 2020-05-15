@@ -24,6 +24,7 @@ def logOut():
 		realmouse.move_mouse_to(random.randrange(log[0] + 3, log[0] + log[2] - 3) , 
 			random.randrange(log[1] + 3, log[1] + log[3] - 3))
 		mouse.click(Button.left, 1)	
+	print("done with logout")
 
 def missclickLeft(x , y):
 	mouse = MouseController()
@@ -1231,7 +1232,9 @@ def alch():
 	keyboard = KeyboardController()
 	mouse = MouseController()
 	# magebook = pyautogui.locateOnScreen('Screenshots/alch/magebook.png', confidence = .70)
-	while overload:
+	x = input("Please enter how many rounds: ")
+	x = int(x)
+	for i in range(x):
 		magebookRed = None
 		while not magebookRed:
 			magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
@@ -1240,11 +1243,19 @@ def alch():
 		mouse.click(Button.left, 1)
 		time.sleep(random.randrange(100, 500) * .001)
 		mouse.click(Button.left, 1)
+	logOut()
 
+def cannon():
+	mouse = MouseController()
+	keyboard = KeyboardController()
+	input("click hereto begin")
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+	while True:
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
 
-
-
-	pass
+		time.sleep(random.randrange(20, 35))
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1278,9 +1289,9 @@ def main():
 		nmz()
 	if script == 'alch':
 		alch()
-	else:
-		test()
-	# logOut()	
+	if script == 'cannon':
+		cannon()
+	
 
 main()
 	
