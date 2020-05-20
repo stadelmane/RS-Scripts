@@ -1284,7 +1284,7 @@ def treecutting():
 			if len(logs) >= 27:
 				dropItem('logsInv' , 'treecutting')
 				chopTree = None
-				logs = None
+				logs = []
 		if len(logs) > 14:
 			print()
 			dropItem('logsInv' , 'treecutting')
