@@ -165,12 +165,16 @@ def minecoal():
 				print('here3')
 
 def dropItem(item, folder):
+	keyboard = KeyboardController()
 	mouse = MouseController()
-	inv = list(pyautogui.locateAllOnScreen('Screenshots/' + folder + '/' + item + '.png', confidence = .70))
-	for obj in inv:
-		pos = clickPos(obj, 3 , 3)
-		realmouse.move_mouse_to(pos[0], pos[1])
-		mouse.click(Button.left, 1)
+	inv = list(pyautogui.locateAllOnScreen('Screenshots/' + folder + '/' + item + '.png', confidence = .90))
+	with keyboard.pressed(Key.shift):
+		for obj in inv:
+			pos = clickPos(obj, 3 , 3)
+			realmouse.move_mouse_to(pos[0], pos[1])
+			mouse.click(Button.left, 1)
+		time.sleep(.2)
+
 
 def skillcheck(skill):
 	mouse = MouseController()
@@ -1257,6 +1261,36 @@ def cannon():
 
 		time.sleep(random.randrange(20, 35))
 
+def treecutting():
+	mouse = MouseController()
+	tree = pyautogui.locateOnScreen('Screenshots/treecutting/tree.png', confidence = .75)
+	while True:
+		pos = clickPos(tree, 3 , 3)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		# mouse.click(Button.left, 1)
+		# time.sleep(1)
+		chopTree = pyautogui.locateOnScreen('Screenshots/treecutting/chopTree.png', confidence = .75)
+		while not chopTree:
+			chopTree = pyautogui.locateOnScreen('Screenshots/treecutting/chopTree.png', confidence = .75)
+
+		# if chopTree:
+		mouse.click(Button.left, 1)
+		while chopTree:
+			chopTree = pyautogui.locateOnScreen('Screenshots/treecutting/chopTree.png', confidence = .75)
+			logs = list(pyautogui.locateAllOnScreen('Screenshots/treecutting/logsInv.png', confidence = .90))
+			lvlUp = pyautogui.locateOnScreen('Screenshots/lvlUp.png', confidence = .80)
+			if lvlUp:
+				chopTree = None
+			if len(logs) >= 27:
+				dropItem('logsInv' , 'treecutting')
+				chopTree = None
+				logs = None
+		if len(logs) > 14:
+			print()
+			dropItem('logsInv' , 'treecutting')
+
+
+
 def main():
 	script = input("Please Enter which script you would like to run: ")
 	if script == 'sandCrabs':
@@ -1270,7 +1304,7 @@ def main():
 	if script == 'string':
 		string()
 	if script == 'cooking':
-		cooking('monkfish')
+		cooking('shark')
 	if script == 'mining':
 		skillcheck('mining')
 	if script == 'cannonBall':
@@ -1291,6 +1325,8 @@ def main():
 		alch()
 	if script == 'cannon':
 		cannon()
+	if script == 'chop':
+		treecutting()
 	
 
 main()
