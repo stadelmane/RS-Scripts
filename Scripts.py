@@ -137,28 +137,28 @@ def minecoal():
 			dropItem('ironoreInv' , 'coalMining')
 
 		failures = 0
-		rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .95)
+		rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .90)
 		if rock2:
 			pos = clickPos(rock2 , 20 , 20)
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock2):
 				# time.sleep(.25)
-				rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', grayscale = False, confidence = .95)
+				rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
 					rock2 = False
 				print('here2')
 
 		failures = 0
-		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .95)
+		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .90)
 		if rock3:
 			pos = clickPos(rock3 , 20 , 5)
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock3):
 				# time.sleep(.25)
-				rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', grayscale = False, confidence = .95)
+				rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
 					rock3 = False
