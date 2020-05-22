@@ -137,7 +137,7 @@ def minecoal():
 			dropItem('ironoreInv' , 'coalMining')
 
 		failures = 0
-		rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .9)
+		rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .95)
 		if rock2:
 			pos = clickPos(rock2 , 20 , 20)
 			realmouse.move_mouse_to(pos[0], pos[1])
@@ -151,7 +151,7 @@ def minecoal():
 				print('here2')
 
 		failures = 0
-		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .85)
+		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .95)
 		if rock3:
 			pos = clickPos(rock3 , 20 , 5)
 			realmouse.move_mouse_to(pos[0], pos[1])
@@ -1289,6 +1289,76 @@ def treecutting():
 			print()
 			dropItem('logsInv' , 'treecutting')
 
+def gem():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
+	
+	chisel_bank = pyautogui.locateOnScreen('Screenshots/gem/chiselBank.png', confidence = .85)
+	gem_bank = pyautogui.locateOnScreen('Screenshots/gem/emeraldBank.png', confidence = .85)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .85)
+	
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	while True:
+		pos = clickPos(chisel_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(gem_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(close_bank, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(.5)
+		chisel = list(pyautogui.locateOnScreen('Screenshots/gem/chiselInv.png', confidence = .85))
+		gem = list(pyautogui.locateAllOnScreen('Screenshots/gem/emeraldInv.png', confidence = .85))
+			
+
+		gem = random.choice(gem)
+			
+		pos = clickPos(chisel, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		pos = clickPos(gem, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press(' ')
+			keyboard.release(' ')
+		else:
+			time.sleep(.1 * random.randrange(10, 21))
+			keyboard.press('1')
+			keyboard.release('1')
+
+		time.sleep(33)
+
+		#click on banker
+		x1 , y1 = stringCord(Xone , Yone)
+		realmouse.move_mouse_to(x1 , y1)
+		mouse.click(Button.left, 1)
+
+		#empty Inv 
+		pos = clickPos(empty_inv, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		time.sleep(.5)
+		mouse.click(Button.left, 1)
+
+		time.sleep(2)
+
 
 
 def main():
@@ -1327,6 +1397,8 @@ def main():
 		cannon()
 	if script == 'chop':
 		treecutting()
+	if script == 'gem':
+		gem()
 	
 
 main()
