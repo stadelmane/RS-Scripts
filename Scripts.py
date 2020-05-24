@@ -127,7 +127,7 @@ def minecoal():
 			mouse.click(Button.left, 1)
 
 			while(rock1):
-				time.sleep(.1)
+				time.sleep(.15)
 				rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', grayscale = False, confidence = .95)
 				failures +=1
 				if failures > 10:
@@ -143,7 +143,7 @@ def minecoal():
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock2):
-				time.sleep(.1)
+				time.sleep(.15)
 				rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
@@ -157,7 +157,7 @@ def minecoal():
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock3):
-				time.sleep(.1)
+				time.sleep(.15)
 				rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
@@ -1285,7 +1285,7 @@ def treecutting():
 				dropItem('logsInv' , 'treecutting')
 				chopTree = None
 				logs = []
-		if len(logs) > 14:
+		if len(logs) > 8:
 			print()
 			dropItem('logsInv' , 'treecutting')
 
