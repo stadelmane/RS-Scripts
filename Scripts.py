@@ -8,6 +8,10 @@ import time
 import random
 import pyautogui
 
+
+keyboard = KeyboardController()
+mouse = MouseController()
+
 def logOut():
 	mouse = MouseController()
 	print("starting logout!")
@@ -125,15 +129,13 @@ def minecoal():
 			pos = clickPos(rock1 , 20 , 20)
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
-
 			while(rock1):
-				time.sleep(.25)
+				time.sleep(.15)
 				rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', grayscale = False, confidence = .95)
 				failures +=1
 				if failures > 10:
 					rock1 = False
-				print('here1')
-		if invFull('ironoreInv' , 'coalMining' , 20):
+		if invFull('ironoreInv' , 'coalMining' , 16):
 			dropItem('ironoreInv' , 'coalMining')
 
 		failures = 0
@@ -143,12 +145,11 @@ def minecoal():
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock2):
-				time.sleep(.25)
+				time.sleep(.15)
 				rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
 					rock2 = False
-				print('here2')
 
 		failures = 0
 		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .90)
@@ -157,12 +158,12 @@ def minecoal():
 			realmouse.move_mouse_to(pos[0], pos[1])
 			mouse.click(Button.left, 1)
 			while(rock3):
-				time.sleep(.25)
+				time.sleep(.15)
 				rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', grayscale = False, confidence = .90)
 				failures +=1
 				if failures > 10:
 					rock3 = False
-				print('here3')
+	logOut()
 
 def dropItem(item, folder):
 	keyboard = KeyboardController()
@@ -1196,6 +1197,7 @@ def nmz():
 	overload = list(pyautogui.locateAllOnScreen('Screenshots/nmz/overload.png', confidence = .96))
 	absorptions = list(pyautogui.locateAllOnScreen('Screenshots/nmz/absorption.png', confidence = .96))
 	prayer = pyautogui.locateOnScreen('Screenshots/nmz/prayer.png', confidence = .70)
+	outside = pyautogui.locateOnScreen('Screenshots/nmz/outside.png', confidence = .70)
 	print(len(absorptions))
 	total_time = 300
 
@@ -1203,7 +1205,9 @@ def nmz():
 	overload2 = overload
 	overload3 = overload
 	overload4 = overload
-	while True:
+	while not outside:
+		outside = pyautogui.locateOnScreen('Screenshots/nmz/outside.png', confidence = .70)
+
 		time_to_sleep = random.randrange(15, 40)
 		print(total_time + time_to_sleep)
 		if total_time + time_to_sleep > 300:
@@ -1221,6 +1225,9 @@ def nmz():
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 
+			if outside:
+				pass
+
 			total_time = 0
 
 		else:
@@ -1231,6 +1238,7 @@ def nmz():
 			mouse.click(Button.left, 1)
 			time.sleep(random.randrange(2 , 4) * .1)
 			mouse.click(Button.left, 1)
+	logOut()
 
 def alch():
 	keyboard = KeyboardController()
@@ -1359,7 +1367,17 @@ def gem():
 
 		time.sleep(2)
 
-
+def flyFish():
+	while True:
+		spot = pyautogui.locateOnScreen('Screenshots/fishing/salmon.png', confidence = .9)
+		pos = clickPos(spot, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(3)
+		not_fishing = pyautogui.locateOnScreen('Screenshots/fishing/notFishing.png', confidence = .70)
+		while not not_fishing:
+			not_fishing = pyautogui.locateOnScreen('Screenshots/fishing/notFishing.png', confidence = .70)
+		# if 
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1399,6 +1417,8 @@ def main():
 		treecutting()
 	if script == 'gem':
 		gem()
+	if script == 'flyFish':
+		flyFish()
 	
 
 main()
