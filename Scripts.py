@@ -756,6 +756,11 @@ def potion():
 def ranarrPotion():
 	mouse = MouseController()
 	keyboard = KeyboardController()
+	herb = input('1 for ranarr 2 for snapdragon')
+	if herb == '1':
+		herb = 'Ranarr'
+	else:
+		herb = 'Snapdragon'
 
 	input('press enter on banker')
 	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
@@ -763,7 +768,7 @@ def ranarrPotion():
 	input('press enter when bank tab is opened')
 
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
-	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmyRanarrBank.png', confidence = .90)
+	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .90)
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
@@ -786,7 +791,7 @@ def ranarrPotion():
 		mouse.click(Button.left, 1)
 		time.sleep(1)
 
-		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .97))
+		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
 		waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
 			
 
@@ -1200,16 +1205,14 @@ def nmz():
 	outside = pyautogui.locateOnScreen('Screenshots/nmz/outside.png', confidence = .70)
 	print(len(absorptions))
 	total_time = 300
-
-	overload1 = overload
-	overload2 = overload
-	overload3 = overload
-	overload4 = overload
+	counter = 0
 	while not outside:
 		outside = pyautogui.locateOnScreen('Screenshots/nmz/outside.png', confidence = .70)
 
 		time_to_sleep = random.randrange(15, 40)
 		print(total_time + time_to_sleep)
+		if outside:
+			pass
 		if total_time + time_to_sleep > 300:
 			
 			time.sleep(301 - total_time)
@@ -1219,14 +1222,14 @@ def nmz():
 			time.sleep(.5)
 			mouse.click(Button.left, 1)
 
-			overloadPot = random.choice(overload4)
 
+			overloadPot = overload[counter // 4]
+			counter += 1
 			pos = clickPos(overloadPot, 3 , 3)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 
-			if outside:
-				pass
+			
 
 			total_time = 0
 
