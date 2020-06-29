@@ -1380,7 +1380,122 @@ def flyFish():
 		not_fishing = pyautogui.locateOnScreen('Screenshots/fishing/notFishing.png', confidence = .70)
 		while not not_fishing:
 			not_fishing = pyautogui.locateOnScreen('Screenshots/fishing/notFishing.png', confidence = .70)
-		# if 
+
+
+
+
+def spinFlax():
+	mouse = MouseController()
+	keyboard = KeyboardController()
+
+	input('press enter on banker')
+	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
+
+	input('press enter when bank tab is opened')
+
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
+
+	flax = pyautogui.locateOnScreen('Screenshots/spinFlax/flax.png', confidence = .90)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	notDone = True
+
+	pos = clickPos(flax, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	pos = clickPos(close_bank, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1)
+
+	mage = pyautogui.locateOnScreen('Screenshots/spinFlax/magicBook.png', confidence = .90)
+	pos = clickPos(mage, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1)
+
+	#first pass
+	spell = pyautogui.locateOnScreen('Screenshots/spinFlax/spell.png', confidence = .80)
+	pos = clickPos(spell, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+
+	for i in range(5):
+		mouse.click(Button.left, 1)
+		time.sleep(3)
+
+	#click on banker
+	x1 , y1 = stringCord(Xone , Yone)
+	realmouse.move_mouse_to(x1 , y1)
+	mouse.click(Button.left, 1)
+	time.sleep(1.5)
+
+	strings = list(pyautogui.locateAllOnScreen('Screenshots/spinFlax/string.png', confidence = .85))
+	string = random.choice(strings)
+		
+	#empty Inv 
+	pos = clickPos(string, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1) 
+
+	#more flax
+	pos = clickPos(flax, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	#close bank
+	pos = clickPos(close_bank, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1)
+
+	while notDone:
+		try:
+			pos = clickPos(spell, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+
+			for i in range(5):
+				mouse.click(Button.left, 1)
+				time.sleep(3)
+
+			#click on banker
+			x1 , y1 = stringCord(Xone , Yone)
+			realmouse.move_mouse_to(x1 , y1)
+			mouse.click(Button.left, 1)
+			time.sleep(.5)
+
+			string = random.choice(strings)
+				
+			#empty Inv 
+			pos = clickPos(string, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1) 
+			flax = pyautogui.locateOnScreen('Screenshots/spinFlax/flax.png', confidence = .90)
+
+			#more flax
+			pos = clickPos(flax, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			#close bank
+			pos = clickPos(close_bank, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			time.sleep(1)
+		except:
+			notDone = False
+			close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+			if close_bank:
+				pos = clickPos(close_bank, 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
+				time.sleep(1)
+			logOut()
+
+
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1422,6 +1537,8 @@ def main():
 		gem()
 	if script == 'flyFish':
 		flyFish()
+	if script == 'flax':
+		spinFlax()
 	
 
 main()
