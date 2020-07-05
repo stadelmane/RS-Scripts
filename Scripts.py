@@ -123,6 +123,41 @@ def minecoal():
 		if random.randrange(0, 100) == 68:
 				skillcheck('mining')
 
+		if invFull('ironoreInv' , 'coalMining' , 20):
+			dropItem('ironoreInv' , 'coalMining')
+
+		rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .90)
+		while not rock1:
+			pass
+		pos = clickPos(rock1 , 20 , 20)
+		realmouse.move_mouse_to(pos[0], pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1.3)
+			
+		pos = clickPos(rock2 , 20 , 20)
+		realmouse.move_mouse_to(pos[0], pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1.3)
+			
+
+		pos = clickPos(rock3 , 20 , 5)
+		realmouse.move_mouse_to(pos[0], pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1.3)
+			
+	logOut()
+
+def minecoalwa():
+	failures = 0
+	mouse = MouseController()
+	rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .70)
+	rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .70)
+	rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .70)
+	itterations = input("How many itterations: ")
+	for i in range(int(itterations)):
+		if random.randrange(0, 100) == 68:
+				skillcheck('mining')
+
 		failures = 0
 		rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .95)
 		if rock1:
