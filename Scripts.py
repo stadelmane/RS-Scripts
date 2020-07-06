@@ -1534,6 +1534,27 @@ def spinFlax():
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
+	if script == 'help':
+		print("agile")
+		print("alch")
+		print("arrowshaft")
+		print("cannon")
+		print("cannonBall")
+		print("chop")
+		print("cooking")
+		print("fire")
+		print("flax")
+		print("flyFish")
+		print("gem")
+		print("hotWater")
+		print("minecoal")
+		print("mining")
+		print("nmz")
+		print("pizza")
+		print("ranarrPotion")
+		print("sandCrabs")
+		print("string")
+		print("trainMagic")
 	if script == 'sandCrabs':
 		sandCrabs()
 	if script == 'minecoal':
@@ -1574,6 +1595,8 @@ def main():
 		flyFish()
 	if script == 'flax':
 		spinFlax()
+	else:
+		print("Invalid script entered.")
 	
 
 main()
