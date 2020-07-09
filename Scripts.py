@@ -113,18 +113,33 @@ def invFull(item, folder, quantity):
 		return False
 
 def minecoal():
-	failures = 0
+	sleep_time = 1.3
+	inv_count = 0
+	maxTime = False
 	mouse = MouseController()
 	rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .70)
 	rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .70)
 	rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .70)
 	itterations = input("How many itterations: ")
-	for i in range(int(itterations)):
-		if random.randrange(0, 100) == 68:
-				skillcheck('mining')
 
+	for i in range(int(itterations)):
+		curr_count = list(pyautogui.locateAllOnScreen('Screenshots/coalMining/ironoreInv.png', confidence = .90))
+		print(len(curr_count), inv_count)
+		if inv_count + 3 == len(curr_count):
+			sleep_time += -.005
+			print(sleep_time)
+		else:
+			sleep_time += .005
+			print("in else statement")
 		if invFull('ironoreInv' , 'coalMining' , 20):
 			dropItem('ironoreInv' , 'coalMining')
+
+		inv_count = len(curr_count)
+
+
+
+		if random.randrange(0, 100) == 68:
+				skillcheck('mining')
 
 		rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .90)
 		while not rock1:
@@ -132,18 +147,18 @@ def minecoal():
 		pos = clickPos(rock1 , 20 , 20)
 		realmouse.move_mouse_to(pos[0], pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(1.3)
+		time.sleep(sleep_time)
 			
 		pos = clickPos(rock2 , 20 , 20)
 		realmouse.move_mouse_to(pos[0], pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(1.3)
+		time.sleep(sleep_time)
 			
 
 		pos = clickPos(rock3 , 20 , 5)
 		realmouse.move_mouse_to(pos[0], pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(1.3)
+		time.sleep(sleep_time)
 			
 	logOut()
 
