@@ -1549,48 +1549,69 @@ def spinFlax():
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
-	if script == 'sandCrabs':
+	if script == 'help':
+		print("agile")
+		print("alch")
+		print("arrowshaft")
+		print("cannon")
+		print("cannonBall")
+		print("chop")
+		print("cooking")
+		print("fire")
+		print("flax")
+		print("flyFish")
+		print("gem")
+		print("hotWater")
+		print("minecoal")
+		print("mining")
+		print("nmz")
+		print("pizza")
+		print("ranarrPotion")
+		print("sandCrabs")
+		print("string")
+		print("trainMagic")
+	elif script == 'sandCrabs':
 		sandCrabs()
-	if script == 'minecoal':
+	elif script == 'minecoal':
 		minecoal()
-	if script == 'trainMagic':
+	elif script == 'trainMagic':
 		trainMagic()
-	if script == 'hotWater':
+	elif script == 'hotWater':
 		hotWater()
-	if script == 'string':
+	elif script == 'string':
 		string()
-	if script == 'cooking':
+	elif script == 'cooking':
 		cooking('shark')
-	if script == 'mining':
+	elif script == 'mining':
 		skillcheck('mining')
-	if script == 'cannonBall':
+	elif script == 'cannonBall':
 		cannonBall()
-	if script == 'arrowshaft':
+	elif script == 'arrowshaft':
 		arrowshaft()
-	if script == 'pizza':
+	elif script == 'pizza':
 		pizza()
-	if script == 'ranarrPotion':
+	elif script == 'ranarrPotion':
 		ranarrPotion()
-	if script == 'fire':
+	elif script == 'fire':
 		fireMaking()
-	if script == 'agile':
+	elif script == 'agile':
 		varrockAgility()
-	if script == 'nmz':
+	elif script == 'nmz':
 		nmz()
-	if script == 'alch':
+	elif script == 'alch':
 		alch()
-	if script == 'cannon':
+	elif script == 'cannon':
 		cannon()
-	if script == 'chop':
+	elif script == 'chop':
 		treecutting()
-	if script == 'gem':
+	elif script == 'gem':
 		gem()
-	if script == 'flyFish':
+	elif script == 'flyFish':
 		flyFish()
-	if script == 'flax':
+	elif script == 'flax':
 		spinFlax()
-	
-
+	else:
+		print("Invalid script entered. Please enter 'help' for a list of commands")
 main()
 	
 
