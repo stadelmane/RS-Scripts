@@ -1110,11 +1110,11 @@ def varrockAgility():
 	mouse = MouseController()
 	for i in range(int(input('Please how many cycles: '))):
 
-		roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .85)
-		roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .85)
+		roof1 = pyautogui.locateOnScreen('Screenshots/agility/agility/roof1.png', confidence = .85)
+		roof1R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1R.png', confidence = .85)
 		while not roof1 and not roof1R:
-			roof1 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1.png', confidence = .80)
-			roof1R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof1R.png', confidence = .80)
+			roof1 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1.png', confidence = .80)
+			roof1R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1R.png', confidence = .80)
 			print("roof1")
 		if roof1R:
 			print("\a")
@@ -1125,11 +1125,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(8.5)
 
-		roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .80)
-		roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .80)
+		roof2 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof2.png', confidence = .80)
+		roof2R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof2R.png', confidence = .80)
 		while not roof2 and not roof2R:
-			roof2 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2.png', confidence = .70)
-			roof2R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof2R.png', confidence = .70)
+			roof2 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof2.png', confidence = .70)
+			roof2R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof2R.png', confidence = .70)
 			print("roof2")
 		if roof2R:
 			print("\a")
@@ -1141,11 +1141,11 @@ def varrockAgility():
 		time.sleep(8)
 
 
-		roof3 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3.png', confidence = .70)
-		roof3R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3R.png', confidence = .70)
+		roof3 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof3.png', confidence = .70)
+		roof3R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof3R.png', confidence = .70)
 		while not roof3 and not roof3R:
-			roof3 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3.png', confidence = .70)
-			roof3R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof3R.png', confidence = .70)
+			roof3 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof3.png', confidence = .70)
+			roof3R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof3R.png', confidence = .70)
 			print("roof3")
 		if roof3R:
 			print("\a")
@@ -1156,11 +1156,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(12)
 
-		roof4 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4.png', confidence = .70)
-		roof4R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4R.png', confidence = .70)
+		roof4 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof4.png', confidence = .70)
+		roof4R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof4R.png', confidence = .70)
 		while not roof4 and not roof4R:
-			roof4 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4.png', confidence = .70)
-			roof4R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof4R.png', confidence = .70)
+			roof4 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof4.png', confidence = .70)
+			roof4R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof4R.png', confidence = .70)
 			print("roof4")
 		if roof4R:
 			print("\a")
@@ -1171,11 +1171,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
-		roof5 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5.png', confidence = .70)
-		roof5R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5R.png', confidence = .70)
+		roof5 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof5.png', confidence = .70)
+		roof5R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof5R.png', confidence = .70)
 		while not roof5 and not roof5R:
-			roof5 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5.png', confidence = .70)
-			roof5R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof5R.png', confidence = .70)
+			roof5 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof5.png', confidence = .70)
+			roof5R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof5R.png', confidence = .70)
 			print("roof5")
 		if roof5R:
 			print("\a")
@@ -1187,11 +1187,11 @@ def varrockAgility():
 		time.sleep(8)
 
 
-		roof6 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6.png', confidence = .70)
-		roof6R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6R.png', confidence = .70)
+		roof6 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof6.png', confidence = .70)
+		roof6R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof6R.png', confidence = .70)
 		while not roof6 and not roof6R:
-			roof6 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6.png', confidence = .70)
-			roof6R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof6R.png', confidence = .70)
+			roof6 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof6.png', confidence = .70)
+			roof6R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof6R.png', confidence = .70)
 			print("roof6")
 		if roof6R:
 			print("\a")
@@ -1202,11 +1202,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(6.5)
 
-		roof7 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7.png', confidence = .70)
-		roof7R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7R.png', confidence = .70)
+		roof7 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof7.png', confidence = .70)
+		roof7R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof7R.png', confidence = .70)
 		while not roof7 and not roof7R:
-			roof7 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7.png', confidence = .70)
-			roof7R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof7R.png', confidence = .70)
+			roof7 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof7.png', confidence = .70)
+			roof7R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof7R.png', confidence = .70)
 			print("roof7")
 		if roof7R:
 			print("\a")
@@ -1217,11 +1217,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(6)
 
-		roof8 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8.png', confidence = .70)
-		roof8R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8R.png', confidence = .70)
+		roof8 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof8.png', confidence = .70)
+		roof8R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof8R.png', confidence = .70)
 		while not roof8 and not roof8R:
-			roof8 = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8.png', confidence = .70)
-			roof8R = pyautogui.locateOnScreen('Screenshots/varrockAgility/roof8R.png', confidence = .70)
+			roof8 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof8.png', confidence = .70)
+			roof8R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof8R.png', confidence = .70)
 			print("roof8")
 		if roof8R:
 			print("\a")
@@ -1232,11 +1232,11 @@ def varrockAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
-		restart = pyautogui.locateOnScreen('Screenshots/varrockAgility/restart.png', confidence = .70)
-		restartR = pyautogui.locateOnScreen('Screenshots/varrockAgility/restartR.png', confidence = .70)
+		restart = pyautogui.locateOnScreen('Screenshots/agility/varrock/restart.png', confidence = .70)
+		restartR = pyautogui.locateOnScreen('Screenshots/agility/varrock/restartR.png', confidence = .70)
 		while not restart and not restartR:
-			restart = pyautogui.locateOnScreen('Screenshots/varrockAgility/restart.png', confidence = .70)
-			restartR = pyautogui.locateOnScreen('Screenshots/varrockAgility/restartR.png', confidence = .70)
+			restart = pyautogui.locateOnScreen('Screenshots/agility/varrock/restart.png', confidence = .70)
+			restartR = pyautogui.locateOnScreen('Screenshots/agility/varrock/restartR.png', confidence = .70)
 		if restartR:
 			print("\a")
 			pos = clickPos(restartR, 10 , 7)
@@ -1245,6 +1245,140 @@ def varrockAgility():
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(11)
+
+def canifisAgility():
+	keyboard = KeyboardController()
+	mouse = MouseController()
+	for i in range(int(input('Please how many cycles: '))):
+
+		roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .80)
+		roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .85)
+		while not roof1 and not roof1R:
+			roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .70)
+			roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .80)
+			print("roof1")
+		if roof1R:
+			print("\a")
+			pos = clickPos(roof1R, 5 , 5)
+		else:
+			pos = clickPos(roof1, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(4)
+
+		roof2 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2.png', confidence = .80)
+		roof2R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2R.png', confidence = .80)
+		while not roof2 and not roof2R:
+			roof2 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2.png', confidence = .70)
+			roof2R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2R.png', confidence = .70)
+			print("roof2")
+		if roof2R:
+			print("\a")
+			pos = clickPos(roof2R, 5 , 3)
+		else:
+			pos = clickPos(roof2, 5 , 3)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
+
+		roof3 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3.png', confidence = .80)
+		roof3R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .80)
+		while not roof3 and not roof3R:
+			roof3 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3.png', confidence = .80)
+			roof3R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .80)
+			print("roof3")
+		if roof3R:
+			print("\a")
+			pos = clickPos(roof3R, 5 , 5)
+		else:
+			pos = clickPos(roof3, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(4.25)
+
+		roof4 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4.png', confidence = .80)
+		roof4R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .80)
+		while not roof4 and not roof4R:
+			roof4 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4.png', confidence = .80)
+			roof4R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .80)
+			print("roof4")
+		if roof4R:
+			print("\a")
+			pos = clickPos(roof4R, 5 , 5)
+		else:
+			pos = clickPos(roof4, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
+
+		roof5 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5.png', confidence = .80)
+		roof5R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5R.png', confidence = .70)
+		while not roof5 and not roof5R:
+			roof5 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5.png', confidence = .70)
+			roof5R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5R.png', confidence = .70)
+			print("roof5")
+		if roof5R:
+			print("\a")
+			pos = clickPos(roof5R, 5 , 5)
+		else:
+			pos = clickPos(roof5, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5.75)
+
+
+		roof6 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6.png', confidence = .80)
+		roof6R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
+		roof6Glitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitch.png', confidence = .80)
+		roof6RGlitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitchR.png', confidence = .80)
+		while not roof6 and not roof6R and not roof6Glitch and not roof6RGlitch:
+			roof6 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6.png', confidence = .75)
+			roof6R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
+			roof6Glitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitch.png', confidence = .75)
+			roof6RGlitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitchR.png', confidence = .75)
+			print("roof6")
+		if roof6R:
+			print("\a")
+			pos = clickPos(roof6R, 5 , 5)
+		elif roof6RGlitch:
+			print("\a")
+			pos = clickPos(roof6RGlitch, 5 , 5)
+		elif roof6Glitch:
+			pos = clickPos(roof6Glitch, 5 , 5)
+		else:
+			pos = clickPos(roof6, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5.75)
+
+		roof7 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7.png', confidence = .80)
+		roof7R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7R.png', confidence = .70)
+		while not roof7 and not roof7R:
+			roof7 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7.png', confidence = .70)
+			roof7R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7R.png', confidence = .70)
+			print("roof7")
+		if roof7R:
+			print("\a")
+			pos = clickPos(roof7R, 5 , 5)
+		else:
+			pos = clickPos(roof7, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
+
+		restart = pyautogui.locateOnScreen('Screenshots/agility/canifis/restart.png', confidence = .80)
+		restartR = pyautogui.locateOnScreen('Screenshots/agility/canifis/restartR.png', confidence = .70)
+		while not restart and not restartR:
+			restart = pyautogui.locateOnScreen('Screenshots/agility/canifis/restart.png', confidence = .70)
+			restartR = pyautogui.locateOnScreen('Screenshots/agility/canifis/restartR.png', confidence = .70)
+		if restartR:
+			print("\a")
+			pos = clickPos(restartR, 5 , 5)
+		else:
+			pos = clickPos(restart, 5 , 5)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(5)
 
 def nmz():
 	keyboard = KeyboardController()
@@ -1550,7 +1684,8 @@ def spinFlax():
 def main():
 	script = input("Please Enter which script you would like to run: ")
 	if script == 'help':
-		print("agile")
+		print("varrockAgility")
+		print("canifisAgility")
 		print("alch")
 		print("arrowshaft")
 		print("cannon")
@@ -1594,8 +1729,10 @@ def main():
 		ranarrPotion()
 	elif script == 'fire':
 		fireMaking()
-	elif script == 'agile':
+	elif script == 'varrockAgility':
 		varrockAgility()
+	elif script == 'canifisAgility':
+		canifisAgility()
 	elif script == 'nmz':
 		nmz()
 	elif script == 'alch':
