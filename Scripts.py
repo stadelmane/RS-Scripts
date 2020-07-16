@@ -848,7 +848,7 @@ def ranarrPotion():
 		pos = clickPos(close_bank, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(1)
+		# time.sleep(1)
 
 		if not grimmy_ranarr_inv and not waterVialInv:
 			grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
@@ -872,11 +872,11 @@ def ranarrPotion():
 		mouse.click(Button.left, 1)
 		
 		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
-			time.sleep(.1 * random.randrange(10, 21))
+			time.sleep(.075 * random.randrange(10, 21))
 			keyboard.press(' ')
 			keyboard.release(' ')
 		else:
-			time.sleep(.1 * random.randrange(10, 21))
+			time.sleep(.075 * random.randrange(10, 21))
 			keyboard.press('1')
 			keyboard.release('1')
 		time.sleep(9)
