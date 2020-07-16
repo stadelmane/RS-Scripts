@@ -823,7 +823,7 @@ def ranarrPotion():
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
 	grimmy_ranarr_inv = None
-	waterVialBank = None
+	waterVialInv = None
 
 
 	pos = clickPos(quantity, 2 , 2)
@@ -850,7 +850,7 @@ def ranarrPotion():
 		mouse.click(Button.left, 1)
 		time.sleep(1)
 
-		if not grimmy_ranarr_inv and not waterVialBank:
+		if not grimmy_ranarr_inv and not waterVialInv:
 			grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
 			waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
 			
