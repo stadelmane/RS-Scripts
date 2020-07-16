@@ -818,7 +818,7 @@ def ranarrPotion():
 	input('press enter when bank tab is opened')
 
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
-	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .90)
+	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .95)
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
@@ -828,6 +828,12 @@ def ranarrPotion():
 	mouse.click(Button.left, 1)
 	notDone = True
 	while notDone:
+		grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .95)
+
+		if not grimmy_ranarr_bank:
+			notDone = False
+			pass
+
 		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
@@ -841,12 +847,10 @@ def ranarrPotion():
 		mouse.click(Button.left, 1)
 		time.sleep(1)
 
-		grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
-		waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+		if not grimmy_ranarr_inv and not waterVialBank:
+			grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
+			waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
 			
-
-		if len(grimmy_ranarr_inv) < 14:
-			notDone = False
 		for i in range(len(grimmy_ranarr_inv)):
 			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
