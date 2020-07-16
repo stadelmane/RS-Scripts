@@ -822,6 +822,9 @@ def ranarrPotion():
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+	grimmy_ranarr_inv = None
+	waterVialBank = None
+
 
 	pos = clickPos(quantity, 2 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
@@ -856,8 +859,10 @@ def ranarrPotion():
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 
-		ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
-		vial = random.choice(waterVialInv)
+		# ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
+		ranarr = grimmy_ranarr_inv[-1]
+		vial = waterVialInv[0]
+		# vial = random.choice(waterVialInv)
 		pos = clickPos(ranarr, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
