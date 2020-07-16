@@ -863,11 +863,12 @@ def ranarrPotion():
 		ranarr = grimmy_ranarr_inv[-1]
 		vial = waterVialInv[0]
 		# vial = random.choice(waterVialInv)
-		pos = clickPos(ranarr, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
 
 		pos = clickPos(vial, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		
+		pos = clickPos(ranarr, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		
