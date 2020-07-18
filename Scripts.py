@@ -1263,7 +1263,7 @@ def canifisAgility():
 
 		roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .80)
 		roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .85)
-		while not roof1 and not roof1R and not roof1Rglitch:
+		while not roof1 and not roof1R:
 			roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .70)
 			roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .70)
 			print("roof1")
@@ -1299,10 +1299,14 @@ def canifisAgility():
 			print("roof3")
 		if roof3R:
 			print("\a")
-			pos = clickPos(roof3R, 5 , 5)
+			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .75)
+			realmouse.move_mouse_to(x , y)
+			# pos = clickPos(roof3R, 5 , 5)
 		else:
-			pos = clickPos(roof3, 5 , 5)
-		realmouse.move_mouse_to(pos[0] , pos[1])
+			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof3.png', confidence = .75)
+			realmouse.move_mouse_to(x , y)
+			# pos = clickPos(roof3, 5 , 5)
+		# realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(4.25)
 
@@ -1338,7 +1342,7 @@ def canifisAgility():
 			pos = clickPos(roof5, 5 , 5)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(5.75)
+		time.sleep(6)
 
 
 		roof6 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6.png', confidence = .80)
@@ -1353,15 +1357,22 @@ def canifisAgility():
 			print("roof6")
 		if roof6R:
 			print("\a")
-			pos = clickPos(roof6R, 5 , 5)
+			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
+			realmouse.move_mouse_to(x , y)
+			# realmouse.move_mouse_to(roof6R[0] , roof6R[1])
+			# pos = clickPos(roof6R, 5 , 5)
 		elif roof6RGlitch:
 			print("\a")
 			pos = clickPos(roof6RGlitch, 5 , 5)
+			realmouse.move_mouse_to(pos[0] , pos[1])
 		elif roof6Glitch:
 			pos = clickPos(roof6Glitch, 5 , 5)
+			realmouse.move_mouse_to(pos[0] , pos[1])
 		else:
-			pos = clickPos(roof6, 5 , 5)
-		realmouse.move_mouse_to(pos[0] , pos[1])
+			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof6.png', confidence = .75)
+			realmouse.move_mouse_to(x , y)
+			# pos = clickPos(roof6, 5 , 5)
+		
 		mouse.click(Button.left, 1)
 		time.sleep(5.75)
 
