@@ -1259,14 +1259,18 @@ def varrockAgility():
 def canifisAgility():
 	keyboard = KeyboardController()
 	mouse = MouseController()
-	for i in range(int(input('Please how many cycles: '))):
-
+	while True:
+		failures=0
 		roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .80)
 		roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .85)
 		while not roof1 and not roof1R:
 			roof1 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1.png', confidence = .70)
 			roof1R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof1R.png', confidence = .70)
 			print("roof1")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof1R:
 			print("\a")
 			pos = clickPos(roof1R, 5 , 5)
@@ -1276,12 +1280,17 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(4)
 
+		failures=0
 		roof2 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2.png', confidence = .80)
 		roof2R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2R.png', confidence = .80)
 		while not roof2 and not roof2R:
 			roof2 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2.png', confidence = .70)
 			roof2R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof2R.png', confidence = .70)
 			print("roof2")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof2R:
 			print("\a")
 			pos = clickPos(roof2R, 5 , 3)
@@ -1291,12 +1300,17 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
+		failures=0
 		roof3 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3.png', confidence = .80)
 		roof3R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .80)
 		while not roof3 and not roof3R:
 			roof3 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3.png', confidence = .80)
 			roof3R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .80)
 			print("roof3")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof3R:
 			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .75)
@@ -1310,12 +1324,17 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(4.25)
 
+		failures=0
 		roof4 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4.png', confidence = .80)
 		roof4R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .80)
 		while not roof4 and not roof4R:
 			roof4 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4.png', confidence = .80)
 			roof4R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .80)
 			print("roof4")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof4R:
 			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .75)
@@ -1329,12 +1348,17 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
+		failures=0
 		roof5 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5.png', confidence = .80)
 		roof5R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5R.png', confidence = .70)
 		while not roof5 and not roof5R:
 			roof5 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5.png', confidence = .70)
 			roof5R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof5R.png', confidence = .70)
 			print("roof5")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof5R:
 			print("\a")
 			pos = clickPos(roof5R, 5 , 5)
@@ -1345,6 +1369,7 @@ def canifisAgility():
 		time.sleep(6)
 
 
+		failures=0
 		roof6 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6.png', confidence = .80)
 		roof6R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
 		roof6Glitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitch.png', confidence = .80)
@@ -1355,6 +1380,10 @@ def canifisAgility():
 			roof6Glitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitch.png', confidence = .75)
 			roof6RGlitch = pyautogui.locateOnScreen('Screenshots/agility/canifis/roofGlitchR.png', confidence = .75)
 			print("roof6")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof6R:
 			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
@@ -1376,12 +1405,17 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5.75)
 
+		failures=0
 		roof7 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7.png', confidence = .80)
 		roof7R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7R.png', confidence = .70)
 		while not roof7 and not roof7R:
 			roof7 = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7.png', confidence = .70)
 			roof7R = pyautogui.locateOnScreen('Screenshots/agility/canifis/roof7R.png', confidence = .70)
 			print("roof7")
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if roof7R:
 			print("\a")
 			pos = clickPos(roof7R, 5 , 5)
@@ -1391,11 +1425,16 @@ def canifisAgility():
 		mouse.click(Button.left, 1)
 		time.sleep(5)
 
+		failures=0
 		restart = pyautogui.locateOnScreen('Screenshots/agility/canifis/restart.png', confidence = .80)
 		restartR = pyautogui.locateOnScreen('Screenshots/agility/canifis/restartR.png', confidence = .70)
 		while not restart and not restartR:
 			restart = pyautogui.locateOnScreen('Screenshots/agility/canifis/restart.png', confidence = .70)
 			restartR = pyautogui.locateOnScreen('Screenshots/agility/canifis/restartR.png', confidence = .70)
+			failures+=1	
+			if failures % 11 == 0:
+				if reset():
+					pass
 		if restartR:
 			print("\a")
 			pos = clickPos(restartR, 5 , 5)
@@ -1404,6 +1443,13 @@ def canifisAgility():
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
 		time.sleep(5)
+
+def reset():
+	response = input("Would you like to reset the script? y or n")
+	if response == 'y':
+		return True
+	else:
+		return False
 
 def nmz():
 	keyboard = KeyboardController()
@@ -1709,10 +1755,9 @@ def spinFlax():
 def main():
 	script = input("Please Enter which script you would like to run: ")
 	if script == 'help':
-		print("varrockAgility")
-		print("canifisAgility")
 		print("alch")
 		print("arrowshaft")
+		print("canifis")
 		print("cannon")
 		print("cannonBall")
 		print("chop")
@@ -1730,6 +1775,7 @@ def main():
 		print("sandCrabs")
 		print("string")
 		print("trainMagic")
+		print("varrockAgility")
 	elif script == 'sandCrabs':
 		sandCrabs()
 	elif script == 'minecoal':
@@ -1756,7 +1802,7 @@ def main():
 		fireMaking()
 	elif script == 'varrockAgility':
 		varrockAgility()
-	elif script == 'canifisAgility':
+	elif script == 'canifis':
 		canifisAgility()
 	elif script == 'nmz':
 		nmz()
