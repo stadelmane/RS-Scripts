@@ -1272,6 +1272,7 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof1R:
+			print("\a")
 			pos = clickPos(roof1R, 5 , 5)
 		else:
 			pos = clickPos(roof1, 5 , 5)
