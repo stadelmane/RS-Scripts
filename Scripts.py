@@ -1272,7 +1272,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof1R:
-			print("\a")
 			pos = clickPos(roof1R, 5 , 5)
 		else:
 			pos = clickPos(roof1, 5 , 5)
@@ -1292,7 +1291,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof2R:
-			print("\a")
 			pos = clickPos(roof2R, 5 , 3)
 		else:
 			pos = clickPos(roof2, 5 , 3)
@@ -1312,7 +1310,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof3R:
-			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof3R.png', confidence = .75)
 			realmouse.move_mouse_to(x , y)
 			# pos = clickPos(roof3R, 5 , 5)
@@ -1336,7 +1333,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof4R:
-			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof4R.png', confidence = .75)
 			realmouse.move_mouse_to(x , y)
 			# pos = clickPos(roof4R, 5 , 5)
@@ -1360,7 +1356,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof5R:
-			print("\a")
 			pos = clickPos(roof5R, 5 , 5)
 		else:
 			pos = clickPos(roof5, 5 , 5)
@@ -1385,13 +1380,11 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof6R:
-			print("\a")
 			x , y = pyautogui.locateCenterOnScreen('Screenshots/agility/canifis/roof6R.png', confidence = .75)
 			realmouse.move_mouse_to(x , y)
 			# realmouse.move_mouse_to(roof6R[0] , roof6R[1])
 			# pos = clickPos(roof6R, 5 , 5)
 		elif roof6RGlitch:
-			print("\a")
 			pos = clickPos(roof6RGlitch, 5 , 5)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 		elif roof6Glitch:
@@ -1417,7 +1410,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if roof7R:
-			print("\a")
 			pos = clickPos(roof7R, 5 , 5)
 		else:
 			pos = clickPos(roof7, 5 , 5)
@@ -1436,7 +1428,6 @@ def canifisAgility():
 				if reset():
 					pass
 		if restartR:
-			print("\a")
 			pos = clickPos(restartR, 5 , 5)
 		else:
 			pos = clickPos(restart, 5 , 5)
@@ -1445,6 +1436,9 @@ def canifisAgility():
 		time.sleep(5)
 
 def reset():
+	print("\a")
+	print("\a")
+	print("\a")
 	response = input("Would you like to reset the script? y or n")
 	if response == 'y':
 		return True
