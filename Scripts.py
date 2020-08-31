@@ -1702,7 +1702,7 @@ def spinFlax():
 	mouse.click(Button.left, 1)
 	time.sleep(1)
 
-	while notDone:
+	for i in range(1500):
 		try:
 			pos = clickPos(spell, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
