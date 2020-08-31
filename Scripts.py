@@ -1557,6 +1557,8 @@ def gem():
 	rock = input("Please enter the correct stone: \n 1: Opal \n 2: Sapphire \n 3: Emerald")
 	if rock == 1:
 		rock = "opal"
+		print("Screenshots not taken yet")
+		break
 	if rock == 2:
 		rock = "sapphire"
 	if rock == 3:
