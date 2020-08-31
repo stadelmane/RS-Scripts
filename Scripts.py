@@ -1554,6 +1554,14 @@ def gem():
 	keyboard = KeyboardController()
 	mouse = MouseController()
 
+	rock = input("Please enter the correct stone: \n 1: Opal \n 2: Sapphire \n 3: Emerald")
+	if rock == 1:
+		rock = "opal"
+	if rock == 2:
+		rock = "sapphire"
+	if rock == 3:
+		rock = "emerald"
+
 	input('press enter on banker')
 	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
 
@@ -1561,7 +1569,7 @@ def gem():
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
 	
 	chisel_bank = pyautogui.locateOnScreen('Screenshots/gem/chiselBank.png', confidence = .85)
-	gem_bank = pyautogui.locateOnScreen('Screenshots/gem/emeraldBank.png', confidence = .85)
+	gem_bank = pyautogui.locateOnScreen('Screenshots/gem/' + rock + 'Bank.png', confidence = .85)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .85)
 	
@@ -1583,7 +1591,7 @@ def gem():
 		mouse.click(Button.left, 1)
 		time.sleep(.5)
 		chisel = list(pyautogui.locateOnScreen('Screenshots/gem/chiselInv.png', confidence = .85))
-		gem = list(pyautogui.locateAllOnScreen('Screenshots/gem/emeraldInv.png', confidence = .85))
+		gem = list(pyautogui.locateAllOnScreen('Screenshots/gem/' + rock + 'Inv.png', confidence = .85))
 			
 
 		gem = random.choice(gem)
