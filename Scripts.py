@@ -806,7 +806,7 @@ def potion():
 def ranarrPotion():
 	mouse = MouseController()
 	keyboard = KeyboardController()
-	herb = input('1 for ranarr 2 for snapdragon')
+	herb = input('1 for ranarr 2 for snapdragon: ')
 	if herb == '1':
 		herb = 'Ranarr'
 	else:
@@ -818,7 +818,7 @@ def ranarrPotion():
 	input('press enter when bank tab is opened')
 
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
-	grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .95)
+	# grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png')
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
 	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
@@ -831,67 +831,70 @@ def ranarrPotion():
 	mouse.click(Button.left, 1)
 	notDone = True
 	while notDone:
-		grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence = .95)
+		try:
+			grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png')
 
-		if not grimmy_ranarr_bank:
-			notDone = False
-			pass
+			if not grimmy_ranarr_bank:
+				notDone = False
+				pass
 
-		pos = clickPos(grimmy_ranarr_bank, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-
-		pos = clickPos(waterVialBank, 2 , 2)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-
-		pos = clickPos(close_bank, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-		# time.sleep(1)
-
-		if not grimmy_ranarr_inv and not waterVialInv:
-			grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
-			waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
-			
-		for i in range(len(grimmy_ranarr_inv)):
-			pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+			pos = clickPos(grimmy_ranarr_bank, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 
-		# ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
-		ranarr = grimmy_ranarr_inv[-1]
-		vial = waterVialInv[0]
-		# vial = random.choice(waterVialInv)
+			pos = clickPos(waterVialBank, 2 , 2)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
 
-		pos = clickPos(vial, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-		
-		pos = clickPos(ranarr, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-		
-		if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
-			time.sleep(.075 * random.randrange(10, 21))
-			keyboard.press(' ')
-			keyboard.release(' ')
-		else:
-			time.sleep(.075 * random.randrange(10, 21))
-			keyboard.press('1')
-			keyboard.release('1')
-		time.sleep(9)
+			pos = clickPos(close_bank, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			# time.sleep(1)
 
-		#click on banker
-		x1 , y1 = stringCord(Xone , Yone)
-		realmouse.move_mouse_to(x1 , y1)
-		mouse.click(Button.left, 1)
-		time.sleep(.75)
+			if not grimmy_ranarr_inv and not waterVialInv:
+				grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
+				waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+				
+			for i in range(len(grimmy_ranarr_inv)):
+				pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
 
-		#empty Inv 
-		pos = clickPos(empty_inv, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
+			# ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
+			ranarr = grimmy_ranarr_inv[-1]
+			vial = waterVialInv[0]
+			# vial = random.choice(waterVialInv)
+
+			pos = clickPos(vial, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			
+			pos = clickPos(ranarr, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			
+			if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press(' ')
+				keyboard.release(' ')
+			else:
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press('1')
+				keyboard.release('1')
+			time.sleep(9)
+
+			#click on banker
+			x1 , y1 = stringCord(Xone , Yone)
+			realmouse.move_mouse_to(x1 , y1)
+			mouse.click(Button.left, 1)
+			time.sleep(.75)
+
+			#empty Inv 
+			pos = clickPos(empty_inv, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		except:
+			logOut()
 
 def test():
 	mouse = MouseController()
@@ -1555,13 +1558,13 @@ def gem():
 	mouse = MouseController()
 
 	rock = input("Please enter the correct stone: \n 1: Opal \n 2: Sapphire \n 3: Emerald")
-	if rock == 1:
+	if rock == "1":
 		rock = "opal"
 		print("Screenshots not taken yet")
-		break
-	if rock == 2:
-		rock = "sapphire"
-	if rock == 3:
+	if rock == "2":
+		rock = 'sapphire'
+		print("getting here!")
+	if rock == "3":
 		rock = "emerald"
 
 	input('press enter on banker')
@@ -1591,7 +1594,7 @@ def gem():
 		pos = clickPos(close_bank, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(.5)
+		time.sleep(1)
 		chisel = list(pyautogui.locateOnScreen('Screenshots/gem/chiselInv.png', confidence = .85))
 		gem = list(pyautogui.locateAllOnScreen('Screenshots/gem/' + rock + 'Inv.png', confidence = .85))
 			
@@ -1627,8 +1630,6 @@ def gem():
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		time.sleep(.5)
 		mouse.click(Button.left, 1)
-
-		time.sleep(2)
 
 def flyFish():
 	while True:
