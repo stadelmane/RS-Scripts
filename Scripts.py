@@ -1123,7 +1123,7 @@ def varrockAgility():
 	mouse = MouseController()
 	for i in range(int(input('Please how many cycles: '))):
 
-		roof1 = pyautogui.locateOnScreen('Screenshots/agility/agility/roof1.png', confidence = .85)
+		roof1 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1.png', confidence = .85)
 		roof1R = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1R.png', confidence = .85)
 		while not roof1 and not roof1R:
 			roof1 = pyautogui.locateOnScreen('Screenshots/agility/varrock/roof1.png', confidence = .80)
