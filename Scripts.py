@@ -1496,23 +1496,6 @@ def nmz():
 			mouse.click(Button.left, 1)
 	logOut()
 
-def alch():
-	keyboard = KeyboardController()
-	mouse = MouseController()
-	# magebook = pyautogui.locateOnScreen('Screenshots/alch/magebook.png', confidence = .70)
-	x = input("Please enter how many rounds: ")
-	x = int(x)
-	for i in range(x):
-		magebookRed = None
-		while not magebookRed:
-			magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
-			time.sleep(1)
-	
-		mouse.click(Button.left, 1)
-		time.sleep(random.randrange(100, 500) * .001)
-		mouse.click(Button.left, 1)
-	logOut()
-
 def cannon():
 	mouse = MouseController()
 	keyboard = KeyboardController()
@@ -1968,14 +1951,33 @@ def muleRanarrs(Xone, Yone):
 	while accept:
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 
-# def alchNmule():
-# 	t = Thread(target=alch)
-# 	t.daemon = True
-# 	t.start()
-# 	time.sleep(4500)
+def alch():
+	#open mage book
+	try:
+		magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
+		if not magebookRed:
+			magebook = pyautogui.locateOnScreen('Screenshots/alch/magebook.png', confidence = .90)
+			pos = clickPos(magebook, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			time.sleep(1)
+		#cast
+		spell = pyautogui.locateOnScreen('Screenshots/alch/spell.png', confidence = .90)
+		realmouse.move_mouse_to(random.randrange(spell[0],spell[0] + 5) , random.randrange(spell[1],spell[1] + 5))
 
-	
-	
+
+		while True:
+			magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
+			while not magebookRed:
+				magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
+				print("sleeping")
+
+			mouse.click(Button.left, 1)
+			time.sleep(random.randrange(100, 2000) * .001)
+			mouse.click(Button.left, 1)
+	except:
+		logOut()
+
 
 
 def main():
