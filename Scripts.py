@@ -1757,6 +1757,226 @@ def spinFlax():
 			logOut()
 
 
+def acceptSupplies():
+	#hit trade button
+	initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+	while not initiateTrade:
+		initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+		print("waiting for trade request to be sent")
+	
+	pos = clickPos(initiateTrade, 4 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	waitingForPlayer = pyautogui.locateOnScreen('Screenshots/trade/waitingForPlayer.png', confidence = .90)
+	while not waitingForPlayer:
+		waitingForPlayer = pyautogui.locateOnScreen('Screenshots/trade/waitingForPlayer.png', confidence = .90)
+		print("waiting for other player to accept")
+
+	for i in range(2):
+		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+		pos = clickPos(accept, 4 , 4)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+		time.sleep(1 + .0001 * random.randrange(1, 500))
+	while accept:
+		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)		
+
+def faceNorth():
+	compass = pyautogui.locateOnScreen('Screenshots/misc/compass.png', confidence = .70)
+	pos = clickPos(compass, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+def AIOHerbs():
+	acceptSupplies()
+	time.sleep(1 + .0001 * random.randrange(1, 500))
+
+	#set up screen
+	faceNorth()
+	for i in range(7):
+		keyboard.press(Key.down)
+	time.sleep(3)
+
+	bankTeller = pyautogui.locateOnScreen('Screenshots/herb/bankTeller.png', confidence = .70)
+	Xone , Yone = int(bankTeller[0]) , int(bankTeller[1] + bankTeller[3] * .5)
+
+	#click on banker
+	x1 , y1 = stringCord(Xone , Yone)
+	realmouse.move_mouse_to(x1 , y1)
+	mouse.click(Button.left, 1)
+	time.sleep(5)
+
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
+	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+	grimmy_ranarr_inv = None
+	waterVialInv = None
+
+	#empty Inv 
+	pos = clickPos(empty_inv, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	time.sleep(2)
+
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	notDone = True
+
+	while notDone:
+		try:
+			grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmyRanarrBank.png')
+
+			if not grimmy_ranarr_bank:
+				notDone = False
+				pass
+
+			pos = clickPos(grimmy_ranarr_bank, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			pos = clickPos(waterVialBank, 2 , 2)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			pos = clickPos(close_bank, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			# time.sleep(1)
+
+			if not grimmy_ranarr_inv and not waterVialInv:
+				grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .90))
+				waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+				
+			for i in range(len(grimmy_ranarr_inv)):
+				pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
+				realmouse.move_mouse_to(pos[0] , pos[1])
+				mouse.click(Button.left, 1)
+
+			# ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
+			ranarr = grimmy_ranarr_inv[-1]
+			vial = waterVialInv[0]
+			# vial = random.choice(waterVialInv)
+
+			pos = clickPos(vial, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			
+			pos = clickPos(ranarr, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			
+			if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press(' ')
+				keyboard.release(' ')
+			else:
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press('1')
+				keyboard.release('1')
+			time.sleep(9)
+
+			#click on banker
+			x1 , y1 = stringCord(Xone , Yone)
+			realmouse.move_mouse_to(x1 , y1)
+			mouse.click(Button.left, 1)
+			time.sleep(.75)
+
+			#empty Inv 
+			pos = clickPos(empty_inv, 4 , 4)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+		except:
+			muleRanarrs(Xone, Yone)
+			logOut()
+
+def closeBank():
+	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	pos = clickPos(close_bank, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+def muleRanarrs(Xone, Yone):
+	x1 , y1 = stringCord(Xone , Yone)
+	realmouse.move_mouse_to(x1 , y1)
+	mouse.click(Button.left, 1)
+	time.sleep(3)
+
+	note = pyautogui.locateOnScreen('Screenshots/bank/note.png', confidence = .80)
+	pos = clickPos(note, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
+	pos = clickPos(quantity, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotion.png', confidence = .95)
+	pos = clickPos(potions, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	closeBank()
+
+	initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+	while not initiateTrade:
+		initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+		print("waiting for trade request to be sent")
+	
+	pos = clickPos(initiateTrade, 4 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	while not accept:
+		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+
+	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
+	with keyboard.pressed(Key.cmd):
+		pos = clickPos(potions, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+
+	time.sleep(2)
+	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
+	pos = clickPos(offer_all, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	pos = clickPos(accept, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1 + .0001 * random.randrange(1, 500))
+
+	secondMenu = pyautogui.locateOnScreen('Screenshots/trade/secondMenu.png', confidence = .90)
+	while not secondMenu:
+		secondMenu = pyautogui.locateOnScreen('Screenshots/trade/secondMenu.png', confidence = .90)
+		print("waiting for other player to accept")
+
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	pos = clickPos(accept, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1 + .0001 * random.randrange(1, 500))
+
+	while accept:
+		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+
+# def alchNmule():
+# 	t = Thread(target=alch)
+# 	t.daemon = True
+# 	t.start()
+# 	time.sleep(4500)
+
+	
+	
+
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -1824,6 +2044,8 @@ def main():
 		flyFish()
 	elif script == 'flax':
 		spinFlax()
+	elif script == 'herb':
+		AIOHerbs()
 	else:
 		print("Invalid script entered. Please enter 'help' for a list of commands")
 main()
