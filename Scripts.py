@@ -2048,7 +2048,7 @@ def main():
 		spinFlax()
 	elif script == 'herb':
 		AIOHerbs()
-	elif script == 'accept'
+	elif script == 'accept':
 		acceptSupplies()
 	else:
 		print("Invalid script entered. Please enter 'help' for a list of commands")
