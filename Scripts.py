@@ -1740,14 +1740,15 @@ def spinFlax():
 			logOut()
 
 
-def acceptSupplies():
+def acceptSupplies(trade_request = None):
 	#hit trade button
-	initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
-	while not initiateTrade:
-		initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
-		print("waiting for trade request to be sent")
+	if trade_request == None:
+		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+		while not trade_request:
+			trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+			print("waiting for trade request to be sent")
 	
-	pos = clickPos(initiateTrade, 4 , 2)
+	pos = clickPos(trade_request, 4 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
@@ -1905,12 +1906,12 @@ def muleRanarrs(Xone, Yone):
 
 	closeBank()
 
-	initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
-	while not initiateTrade:
-		initiateTrade = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+	trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+	while not trade_request:
+		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
 		print("waiting for trade request to be sent")
 	
-	pos = clickPos(initiateTrade, 4 , 2)
+	pos = clickPos(trade_request, 4 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
@@ -1973,12 +1974,33 @@ def alch():
 				print("sleeping")
 
 			mouse.click(Button.left, 1)
-			time.sleep(random.randrange(100, 2000) * .001)
+			time.sleep(random.randrange(100, 500) * .001)
 			mouse.click(Button.left, 1)
 	except:
 		logOut()
 
+def alchNmule():
+	altmalt_traded = False
+	ihaulstuff_traded = False
+	t = Thread(target=alch)
+	t.daemon = True
+	t.start()
+	#wait an hour
+	time.sleep(3)
+	while  altmalt_traded == False or ihaulstuff_traded == False:
+		print("Working")
+		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
+		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 
+		if altmalt_traderequest:
+			altmalt_traded = True
+			acceptSupplies(altmalt_traderequest)
+
+
+		if ihaulstuff_traderequest:
+			ihaulstuff_traded = True
+			acceptSupplies(ihaulstuff_traderequest)
+	logOut()
 
 def main():
 	script = input("Please Enter which script you would like to run: ")
@@ -2050,6 +2072,8 @@ def main():
 		AIOHerbs()
 	elif script == 'accept':
 		acceptSupplies()
+	elif script == 'alchNmule':
+		alchNmule()
 	else:
 		print("Invalid script entered. Please enter 'help' for a list of commands")
 main()
