@@ -1920,10 +1920,9 @@ def muleRanarrs(Xone, Yone):
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 
 	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
-	with keyboard.pressed(Key.cmd):
-		pos = clickPos(potions, 2 , 2)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
+	pos = clickPos(potions, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.right, 1)
 
 	time.sleep(2)
 	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
@@ -1979,14 +1978,17 @@ def alch():
 	except:
 		logOut()
 
-def alchNmule():
-	altmalt_traded = False
-	ihaulstuff_traded = False
+def alchThread():
 	t = Thread(target=alch)
 	t.daemon = True
 	t.start()
-	#wait an hour
-	time.sleep(3)
+	time.sleep(10)
+
+def alchNmule():
+	altmalt_traded = False
+	ihaulstuff_traded = False
+	alchThread()
+
 	while  altmalt_traded == False or ihaulstuff_traded == False:
 		print("Working")
 		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
