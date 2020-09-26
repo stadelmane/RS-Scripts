@@ -11,6 +11,7 @@ import pyautogui
 
 keyboard = KeyboardController()
 mouse = MouseController()
+alchThread = True
 
 def logOut():
 	mouse = MouseController()
@@ -1966,7 +1967,7 @@ def alch():
 		realmouse.move_mouse_to(random.randrange(spell[0],spell[0] + 5) , random.randrange(spell[1],spell[1] + 5))
 
 
-		while True:
+		while alchThread:
 			magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
 			while not magebookRed:
 				magebookRed = pyautogui.locateOnScreen('Screenshots/alch/magebookRed.png', confidence = .90)
@@ -1983,23 +1984,25 @@ def alchThread():
 	t.daemon = True
 	t.start()
 	time.sleep(10)
+	global alchThread
+	alchThread = False
 
 def alchNmule():
 	altmalt_traded = False
 	ihaulstuff_traded = False
 	alchThread()
 
-	while  altmalt_traded == False or ihaulstuff_traded == False:
-		print("Working")
+	while  altmalt_traded == False:# or ihaulstuff_traded == False:
+		print("alchThread: " , alchThread)
 		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
 		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 
-		if altmalt_traderequest:
+		if altmalt_traderequest and altmalt_traded == False:
 			altmalt_traded = True
 			acceptSupplies(altmalt_traderequest)
 
 
-		if ihaulstuff_traderequest:
+		if ihaulstuff_traderequest and ihaulstuff_traded == False:
 			ihaulstuff_traded = True
 			acceptSupplies(ihaulstuff_traderequest)
 	logOut()
