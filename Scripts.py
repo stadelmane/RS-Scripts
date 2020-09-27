@@ -1925,7 +1925,7 @@ def muleRanarrs(Xone, Yone):
 
 	number_busy_responses = 0
 	busy_responses = list(pyautogui.locateAllOnScreen('Screenshots/trade/playerBusy.png', confidence = .90))
-	while number_busy_responses != busy_responses:
+	while number_busy_responses != count(busy_responses):
 
 		time.sleep(2)
 		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
