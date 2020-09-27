@@ -1775,7 +1775,7 @@ def acceptSupplies(trade_request = None):
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 	time.sleep(1 + .0001 * random.randrange(1, 500))
-	
+
 	while accept:
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)		
 
@@ -1976,6 +1976,7 @@ def muleRanarrs(Xone, Yone):
 		secondMenu = pyautogui.locateOnScreen('Screenshots/trade/secondMenu.png', confidence = .90)
 		print("waiting for other player to accept")
 
+	time.sleep(2)
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	pos = clickPos(accept, 4 , 4)
 	realmouse.move_mouse_to(pos[0] , pos[1])
