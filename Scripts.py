@@ -1884,6 +1884,12 @@ def closeBank():
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
+def openTradeTab():
+	trade_tab = pyautogui.locateOnScreen('Screenshots/trade/tab.png', confidence = .80)
+	pos = clickPos(trade_tab, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
 def muleRanarrs(Xone, Yone):
 	x1 , y1 = stringCord(Xone , Yone)
 	realmouse.move_mouse_to(x1 , y1)
@@ -1906,6 +1912,7 @@ def muleRanarrs(Xone, Yone):
 	mouse.click(Button.left, 1)
 
 	closeBank()
+	openTradeTab()
 
 	trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
 	while not trade_request:
@@ -1915,6 +1922,14 @@ def muleRanarrs(Xone, Yone):
 	pos = clickPos(trade_request, 4 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
+
+	request_sent = pyautogui.locateOnScreen('Screenshots/trade/succesfulReq.png', confidence = .90)
+	while not request_sent:
+		time.sleep(2)
+		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+		pos = clickPos(trade_request, 4 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
 
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	while not accept:
@@ -1983,27 +1998,30 @@ def alchThread():
 	t = Thread(target=alch)
 	t.daemon = True
 	t.start()
-	global alchThread
-	alchThread = False
+
 
 def alchNmule():
 	altmalt_traded = False
 	ihaulstuff_traded = False
+	global alchThread
+	# alchThread = False
+
 	alchThread()
 
 	while  altmalt_traded == False or ihaulstuff_traded == False:
-		print("alchThread: " , alchThread)
 		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
 		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
-
+		print("here")
 		if altmalt_traderequest and altmalt_traded == False:
 			altmalt_traded = True
-			alchThread = True
+			alchThread = False
+			time.sleep(2)
 			acceptSupplies(altmalt_traderequest)
 
 		if ihaulstuff_traderequest and ihaulstuff_traded == False:
 			ihaulstuff_traded = True
-			alchThread = True
+			time.sleep(2)
+			alchThread = False
 			acceptSupplies(ihaulstuff_traderequest)
 	logOut()
 
