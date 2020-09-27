@@ -1763,7 +1763,7 @@ def acceptSupplies(trade_request = None):
 		pos = clickPos(accept, 4 , 4)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-		time.sleep(1 + .0001 * random.randrange(1, 500))
+		time.sleep(3 + .0001 * random.randrange(1, 500))
 	while accept:
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)		
 
@@ -1925,7 +1925,7 @@ def muleRanarrs(Xone, Yone):
 
 	number_busy_responses = 0
 	busy_responses = list(pyautogui.locateAllOnScreen('Screenshots/trade/playerBusy.png', confidence = .90))
-	while number_busy_responses != count(busy_responses):
+	while number_busy_responses != len(busy_responses):
 
 		time.sleep(2)
 		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
