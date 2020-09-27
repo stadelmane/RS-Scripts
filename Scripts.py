@@ -1983,6 +1983,8 @@ def alchThread():
 	t = Thread(target=alch)
 	t.daemon = True
 	t.start()
+	global alchThread
+	alchThread = False
 
 def alchNmule():
 	altmalt_traded = False
@@ -1995,15 +1997,13 @@ def alchNmule():
 		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 
 		if altmalt_traderequest and altmalt_traded == False:
-			global alchThread
-			alchThread = False
 			altmalt_traded = True
+			alchThread = True
 			acceptSupplies(altmalt_traderequest)
 
 		if ihaulstuff_traderequest and ihaulstuff_traded == False:
-			global alchThread
-			alchThread = False
 			ihaulstuff_traded = True
+			alchThread = True
 			acceptSupplies(ihaulstuff_traderequest)
 	logOut()
 
