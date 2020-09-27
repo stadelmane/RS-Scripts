@@ -1934,12 +1934,13 @@ def muleRanarrs(Xone, Yone):
 	pos = clickPos(trade_request, 4 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
+	time.sleep(2)
 
 	number_busy_responses = 0
 	busy_responses = list(pyautogui.locateAllOnScreen('Screenshots/trade/playerBusy.png', confidence = .90))
 	while number_busy_responses != len(busy_responses):
-
-		time.sleep(2)
+		print("Waiting for non-busy response")
+		time.sleep(5)
 		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
 		pos = clickPos(trade_request, 4 , 2)
 		realmouse.move_mouse_to(pos[0] , pos[1])
@@ -2027,19 +2028,19 @@ def alchNmule():
 
 	alchThread()
 
-	while  altmalt_traded == False:# or ihaulstuff_traded == False:
+	while  altmalt_traded == False or ihaulstuff_traded == False:
 		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
 		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 		print("here")
 		if altmalt_traderequest and altmalt_traded == False:
 			altmalt_traded = True
 			alchThread = False
-			time.sleep(2)
+			time.sleep(10)
 			acceptSupplies(altmalt_traderequest)
 
 		if ihaulstuff_traderequest and ihaulstuff_traded == False:
 			ihaulstuff_traded = True
-			time.sleep(2)
+			time.sleep(10)
 			alchThread = False
 			acceptSupplies(ihaulstuff_traderequest)
 	logOut()
