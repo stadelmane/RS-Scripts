@@ -1936,23 +1936,15 @@ def muleRanarrs(Xone, Yone):
 	mouse.click(Button.left, 1)
 	time.sleep(2)
 
-	number_busy_responses = 0
-	busy_responses = list(pyautogui.locateAllOnScreen('Screenshots/trade/playerBusy.png', confidence = .90))
-	while number_busy_responses != len(busy_responses):
-		print("Waiting for non-busy response")
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	while not accept:
 		time.sleep(5)
 		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
 		pos = clickPos(trade_request, 4 , 2)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.left, 1)
-
-		number_busy_responses += 1
-		busy_responses = list(pyautogui.locateAllOnScreen('Screenshots/trade/playerBusy.png', confidence = .90))
-		print("Seen on screen: " , busy_responses , "expected: " , number_busy_responses)
-
-	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
-	while not accept:
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+
 
 	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
 	pos = clickPos(potions, 2 , 2)
