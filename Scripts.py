@@ -1758,12 +1758,24 @@ def acceptSupplies(trade_request = None):
 		waitingForPlayer = pyautogui.locateOnScreen('Screenshots/trade/waitingForPlayer.png', confidence = .90)
 		print("waiting for other player to accept")
 
-	for i in range(2):
-		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
-		pos = clickPos(accept, 4 , 4)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-		time.sleep(3 + .0001 * random.randrange(1, 500))
+	
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	pos = clickPos(accept, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	
+
+	secondMenu = pyautogui.locateOnScreen('Screenshots/trade/secondMenu.png', confidence = .90)
+	while not secondMenu:
+		secondMenu = pyautogui.locateOnScreen('Screenshots/trade/secondMenu.png', confidence = .90)
+		print("waiting for other player to accept")
+
+	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+	pos = clickPos(accept, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	time.sleep(1 + .0001 * random.randrange(1, 500))
+	
 	while accept:
 		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)		
 
@@ -2014,7 +2026,7 @@ def alchNmule():
 
 	alchThread()
 
-	while  altmalt_traded == False or ihaulstuff_traded == False:
+	while  altmalt_traded == False:# or ihaulstuff_traded == False:
 		altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
 		ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 		print("here")
