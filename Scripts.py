@@ -1785,15 +1785,21 @@ def faceNorth():
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
-def AIOHerbs():
-	acceptSupplies()
+def AIOHerbs(type):
+	if type == "consumer":
+		acceptSupplies()
 	time.sleep(1 + .0001 * random.randrange(1, 500))
 
 	#set up screen
 	faceNorth()
-	for i in range(7):
-		keyboard.press(Key.down)
-	time.sleep(3)
+	
+	try:
+		with keyboard.press(Key.down):
+			for i in range(7):
+				pass
+		time.sleep(3)
+	except AttributeError:
+		pass
 
 	bankTeller = pyautogui.locateOnScreen('Screenshots/herb/bankTeller.png', confidence = .70)
 	Xone , Yone = int(bankTeller[0]) , int(bankTeller[1] + bankTeller[3] * .5)
@@ -1853,10 +1859,8 @@ def AIOHerbs():
 				realmouse.move_mouse_to(pos[0] , pos[1])
 				mouse.click(Button.left, 1)
 
-			# ranarr = random.choice(grimmy_ranarr_inv[0 : len(grimmy_ranarr_inv)-2])
 			ranarr = grimmy_ranarr_inv[-1]
 			vial = waterVialInv[0]
-			# vial = random.choice(waterVialInv)
 
 			pos = clickPos(vial, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
@@ -2103,8 +2107,10 @@ def main():
 		flyFish()
 	elif script == 'flax':
 		spinFlax()
+	elif script == 'herbP':
+		AIOHerbs("provider")
 	elif script == 'herb':
-		AIOHerbs()
+		AIOHerbs("consumer")
 	elif script == 'accept':
 		acceptSupplies()
 	elif script == 'alchNmule':
