@@ -1887,7 +1887,7 @@ def AIOHerbs():
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 		except:
-			muleRanarrs(Xone, Yone)
+			# muleRanarrs(Xone, Yone)
 			logOut()
 
 def closeBank():
