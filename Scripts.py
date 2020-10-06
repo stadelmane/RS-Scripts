@@ -1785,23 +1785,33 @@ def faceNorth():
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
+def lookStraight():
+	try:
+		keyboard.press(Key.down)
+		time.sleep(1.5)
+		keyboard.release(Key.down)
+	except AttributeError:
+		print("Error in looking straight call")
+
+
+
+
 def AIOHerbs(type):
 	if type == "consumer":
 		acceptSupplies()
+	else:
+		#ensure entity hider is on
+		pass
+
 	time.sleep(1 + .0001 * random.randrange(1, 500))
 
 	#set up screen
 	faceNorth()
-	
-	try:
-		with keyboard.press(Key.down):
-			for i in range(7):
-				pass
-		time.sleep(3)
-	except AttributeError:
-		pass
+	lookStraight()
+	print("done setting up screen")
 
-	bankTeller = pyautogui.locateOnScreen('Screenshots/herb/bankTeller.png', confidence = .70)
+	time.sleep(.5)
+	bankTeller = pyautogui.locateOnScreen('Screenshots/herb/bankTeller.png', confidence = .80)
 	Xone , Yone = int(bankTeller[0]) , int(bankTeller[1] + bankTeller[3] * .5)
 
 	#click on banker
@@ -1891,8 +1901,39 @@ def AIOHerbs(type):
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 		except:
-			# muleRanarrs(Xone, Yone)
-			logOut()
+			pass
+	try:
+		closeBank()
+	except:
+		pass
+	if type == "consumer":
+		dummyClick():
+		muleRanarrs(Xone, Yone)
+	else:
+		altmalt_traded = False
+		# ihaulstuff_traded = False
+		while  altmalt_traded == False:# or ihaulstuff_traded == False:
+			altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
+			ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
+			print("here")
+			if altmalt_traderequest and altmalt_traded == False:
+				altmalt_traded = True
+				alchThread = False
+				time.sleep(10)
+				acceptSupplies(altmalt_traderequest)
+
+			if ihaulstuff_traderequest and ihaulstuff_traded == False:
+				ihaulstuff_traded = True
+				time.sleep(10)
+				alchThread = False
+				acceptSupplies(ihaulstuff_traderequest)
+	logOut()
+
+def dummyClick():
+	inv = pyautogui.locateOnScreen('Screenshots/misc/openInv.png', confidence = .80)
+	pos = clickPos(inv, 4 , 4)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
 
 def closeBank():
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
@@ -2117,6 +2158,8 @@ def main():
 		alchNmule()
 	else:
 		print("Invalid script entered. Please enter 'help' for a list of commands")
+		time.sleep(1)
+		lookStraight()
 main()
 	
 
