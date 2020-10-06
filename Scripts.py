@@ -1858,7 +1858,6 @@ def AIOHerbs(type):
 			pos = clickPos(close_bank, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
-			# time.sleep(1)
 
 			if not grimmy_ranarr_inv and not waterVialInv:
 				grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .90))
@@ -1889,6 +1888,9 @@ def AIOHerbs(type):
 				keyboard.press('1')
 				keyboard.release('1')
 			time.sleep(9)
+			if not (pyautogui.locateOnScreen('Screenshots/herb/ranarrInvCheck.png', confidence = .80)):
+				print("inv not full of ranarrs!")
+				dummyClick()
 
 			#click on banker
 			x1 , y1 = stringCord(Xone , Yone)
@@ -1902,12 +1904,7 @@ def AIOHerbs(type):
 			mouse.click(Button.left, 1)
 		except:
 			pass
-	try:
-		closeBank()
-	except:
-		pass
 	if type == "consumer":
-		dummyClick()
 		muleRanarrs(Xone, Yone)
 	else:
 		altmalt_traded = False
