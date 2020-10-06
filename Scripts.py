@@ -1907,7 +1907,7 @@ def AIOHerbs(type):
 	except:
 		pass
 	if type == "consumer":
-		dummyClick():
+		dummyClick()
 		muleRanarrs(Xone, Yone)
 	else:
 		altmalt_traded = False
@@ -2158,8 +2158,6 @@ def main():
 		alchNmule()
 	else:
 		print("Invalid script entered. Please enter 'help' for a list of commands")
-		time.sleep(1)
-		lookStraight()
 main()
 	
 
