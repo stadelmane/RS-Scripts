@@ -1977,7 +1977,7 @@ def muleRanarrs(Xone, Yone):
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	while not accept:
 		i = 0
-		while i < 20 or not accept:
+		while i < 20 and not accept:
 			i+=1
 			accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 			time.sleep(1)
