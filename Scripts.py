@@ -1818,7 +1818,7 @@ def AIOHerbs(type):
 	x1 , y1 = stringCord(Xone , Yone)
 	realmouse.move_mouse_to(x1 , y1)
 	mouse.click(Button.left, 1)
-	time.sleep(5)
+	time.sleep(2)
 
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
@@ -1860,9 +1860,10 @@ def AIOHerbs(type):
 			mouse.click(Button.left, 1)
 
 			if not grimmy_ranarr_inv and not waterVialInv:
+				time.sleep(1)
 				grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmyRanarrInv.png', confidence = .90))
 				waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
-				
+
 			for i in range(len(grimmy_ranarr_inv)):
 				pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
 				realmouse.move_mouse_to(pos[0] , pos[1])
@@ -1887,10 +1888,11 @@ def AIOHerbs(type):
 				time.sleep(.075 * random.randrange(10, 21))
 				keyboard.press('1')
 				keyboard.release('1')
-			time.sleep(9)
-			if not (pyautogui.locateOnScreen('Screenshots/herb/ranarrInvCheck.png', confidence = .80)):
+			time.sleep(1)
+			if not (pyautogui.locateOnScreen('Screenshots/herb/ranarrInvCheck.png', confidence = .75)):
 				print("inv not full of ranarrs!")
 				dummyClick()
+			time.sleep(7.75)
 
 			#click on banker
 			x1 , y1 = stringCord(Xone , Yone)
@@ -1907,6 +1909,7 @@ def AIOHerbs(type):
 	if type == "consumer":
 		muleRanarrs(Xone, Yone)
 	else:
+		closeBank()
 		altmalt_traded = False
 		# ihaulstuff_traded = False
 		while  altmalt_traded == False:# or ihaulstuff_traded == False:
@@ -1915,14 +1918,10 @@ def AIOHerbs(type):
 			print("here")
 			if altmalt_traderequest and altmalt_traded == False:
 				altmalt_traded = True
-				alchThread = False
-				time.sleep(10)
 				acceptSupplies(altmalt_traderequest)
 
 			if ihaulstuff_traderequest and ihaulstuff_traded == False:
 				ihaulstuff_traded = True
-				time.sleep(10)
-				alchThread = False
 				acceptSupplies(ihaulstuff_traderequest)
 	logOut()
 
@@ -1945,10 +1944,6 @@ def openTradeTab():
 	mouse.click(Button.left, 1)
 
 def muleRanarrs(Xone, Yone):
-	x1 , y1 = stringCord(Xone , Yone)
-	realmouse.move_mouse_to(x1 , y1)
-	mouse.click(Button.left, 1)
-	time.sleep(3)
 
 	note = pyautogui.locateOnScreen('Screenshots/bank/note.png', confidence = .80)
 	pos = clickPos(note, 2 , 2)
@@ -1980,7 +1975,7 @@ def muleRanarrs(Xone, Yone):
 
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	while not accept:
-		time.sleep(5)
+		time.sleep(30)
 		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
 		pos = clickPos(trade_request, 4 , 2)
 		realmouse.move_mouse_to(pos[0] , pos[1])
