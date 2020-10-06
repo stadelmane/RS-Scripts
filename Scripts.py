@@ -1973,14 +1973,20 @@ def muleRanarrs(Xone, Yone):
 	mouse.click(Button.left, 1)
 	time.sleep(2)
 
+
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	while not accept:
-		time.sleep(30)
-		trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
-		pos = clickPos(trade_request, 4 , 2)
-		realmouse.move_mouse_to(pos[0] , pos[1])
-		mouse.click(Button.left, 1)
-		accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+		for i in range(20):
+			accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
+			time.sleep(1)
+
+		if not accept: 
+			trade_request = pyautogui.locateOnScreen('Screenshots/trade/initiateTrade.png', confidence = .90)
+			pos = clickPos(trade_request, 4 , 2)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+			time.sleep(1)
+			accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 
 
 	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
