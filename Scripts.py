@@ -1914,8 +1914,8 @@ def AIOHerbs(type):
 	else:
 		closeBank()
 		altmalt_traded = False
-		# ihaulstuff_traded = False
-		while  altmalt_traded == False:# or ihaulstuff_traded == False:
+		ihaulstuff_traded = False
+		while  altmalt_traded == False or ihaulstuff_traded == False:
 			altmalt_traderequest = pyautogui.locateOnScreen('Screenshots/trade/altmalt.png', confidence = .90)
 			ihaulstuff_traderequest = pyautogui.locateOnScreen('Screenshots/trade/ihaulstuff.png', confidence = .90)
 			print("here")
