@@ -1960,6 +1960,11 @@ def muleRanarrs(Xone, Yone):
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.left, 1)
 
+	cleaned_ranarrs = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarr.png', confidence = .90)
+	pos = clickPos(cleaned_ranarrs, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)	
+
 	closeBank()
 	openTradeTab()
 
@@ -1996,7 +2001,18 @@ def muleRanarrs(Xone, Yone):
 	realmouse.move_mouse_to(pos[0] , pos[1])
 	mouse.click(Button.right, 1)
 
-	time.sleep(2)
+	time.sleep(.5)
+	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
+	pos = clickPos(offer_all, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+
+	cleaned_ranarrs_inv = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarrInv.png', confidence = .95)
+	pos = clickPos(cleaned_ranarrs_inv, 2 , 2)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.right, 1)
+
+	time.sleep(.5)
 	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
 	pos = clickPos(offer_all, 2 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
