@@ -1998,29 +1998,33 @@ def muleRanarrs(Xone, Yone):
 			time.sleep(1)
 			accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 
+	try:
+		potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
+		pos = clickPos(potions, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.right, 1)
 
-	potions = pyautogui.locateOnScreen('Screenshots/herb/ranarrPotionNoted.png', confidence = .95)
-	pos = clickPos(potions, 2 , 2)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.right, 1)
+		time.sleep(.5)
+		offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
+		pos = clickPos(offer_all, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+	except:
+		pass
 
-	time.sleep(.5)
-	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
-	pos = clickPos(offer_all, 2 , 2)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
+	try:
+		cleaned_ranarrs_inv = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarrNoted.png', confidence = .95)
+		pos = clickPos(cleaned_ranarrs_inv, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.right, 1)
 
-	cleaned_ranarrs_inv = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarrNoted.png', confidence = .95)
-	pos = clickPos(cleaned_ranarrs_inv, 2 , 2)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.right, 1)
-
-	time.sleep(.5)
-	offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
-	pos = clickPos(offer_all, 2 , 2)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
-
+		time.sleep(.5)
+		offer_all = pyautogui.locateOnScreen('Screenshots/trade/offer_all.png', confidence = .90)
+		pos = clickPos(offer_all, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+	except:
+		pass
 	
 	accept = pyautogui.locateOnScreen('Screenshots/trade/accept.png', confidence = .90)
 	pos = clickPos(accept, 4 , 4)
