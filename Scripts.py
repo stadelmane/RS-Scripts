@@ -2013,7 +2013,7 @@ def muleRanarrs(Xone, Yone):
 		pass
 
 	try:
-		cleaned_ranarrs_inv = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarrNoted.png', confidence = .95)
+		cleaned_ranarrs_inv = pyautogui.locateOnScreen('Screenshots/herb/cleanRanarrNoted.png', confidence = .87)
 		pos = clickPos(cleaned_ranarrs_inv, 2 , 2)
 		realmouse.move_mouse_to(pos[0] , pos[1])
 		mouse.click(Button.right, 1)
