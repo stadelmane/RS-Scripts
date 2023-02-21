@@ -3,14 +3,19 @@ from pynput.mouse import Button, Controller as MouseController
 from Custom_Modules import realmouse
 from threading import Thread
 
+import sys, traceback
 import webbrowser
 import time
 import random
 import pyautogui
+import typing
 
 
 keyboard = KeyboardController()
 mouse = MouseController()
+
+def clickPos(item, errorX, errorY):
+	return random.randrange(item[0] + errorX , item[0] + item[2] - errorX) , random.randrange(item[1] + errorY , item[1] + item[3] - errorY)
 
 def logOut():
 	mouse = MouseController()
@@ -55,6 +60,14 @@ def randTime():
 
 def stringCord(x , y):
 	return random.randrange(x, x+10) , random.randrange(y, y+15)
+
+def move_mouse_and_click(object, deviation_x: int, deviation_y: int, sleep_time: float=None):
+	pos = clickPos(object, deviation_x , deviation_y)
+	realmouse.move_mouse_to(pos[0] , pos[1])
+	mouse.click(Button.left, 1)
+	if sleep_time:
+		print(f"sleeping for {sleep_time} seconds")
+		time.sleep(sleep_time)
 
 
 def string():
@@ -345,8 +358,7 @@ def cannonBall():
 		keyboard.release('1')
 
 
-def clickPos(item, errorX, errorY):
-	return random.randrange(item[0] + errorX , item[0] + item[2] - errorX) , random.randrange(item[1] + errorY , item[1] + item[3] - errorY)
+
 
 
 '''food parameter is the food that you would like to be cooked.
@@ -817,27 +829,30 @@ def ranarrPotion():
 
 	input('press enter when bank tab is opened')
 
-	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .80)
+	quantity = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .90)
 	# grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png')
 	waterVialBank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
 	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
-	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .95)
+	empty_inv = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .90)
 	grimmy_ranarr_inv = None
 	waterVialInv = None
 
+	try:
+		pos = clickPos(quantity, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+	except:
+		pass
 
-	pos = clickPos(quantity, 2 , 2)
-	realmouse.move_mouse_to(pos[0] , pos[1])
-	mouse.click(Button.left, 1)
 	notDone = True
 	while notDone:
 		try:
-			grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png')
+			grimmy_ranarr_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence=.97)
 
 			if not grimmy_ranarr_bank:
+				print("couldn't find")
 				notDone = False
-				pass
-
+				continue
 			pos = clickPos(grimmy_ranarr_bank, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
@@ -851,9 +866,9 @@ def ranarrPotion():
 			mouse.click(Button.left, 1)
 			# time.sleep(1)
 
-			if not grimmy_ranarr_inv and not waterVialInv:
-				grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
-				waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+			# if not grimmy_ranarr_inv and not waterVialInv:
+			grimmy_ranarr_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
+			waterVialInv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
 				
 			for i in range(len(grimmy_ranarr_inv)):
 				pos = clickPos(grimmy_ranarr_inv[i], 4 , 4)
@@ -893,20 +908,127 @@ def ranarrPotion():
 			pos = clickPos(empty_inv, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
-		except:
-			logOut()
+		except Exception as e: 
+			print(e)
+			print(traceback.format_exc())
+			print("log out")
+	print("log out")
+			# logOut()
+
+def clean_and_create_potion():
+	mouse = MouseController()
+	keyboard = KeyboardController()
+	herb = 'Ranarr'
+
+	input('press enter on banker')
+	banker = int((mouse.position)[0]), int((mouse.position)[1]), 60, 40
+	print("banker", banker)
+
+	input('press enter when bank tab is opened to begin script')
+
+	# Initialize bank locations
+	withdrawl_x_quantity_btn = pyautogui.locateOnScreen('Screenshots/bank/x.png', confidence = .90)
+	water_vial_bank = pyautogui.locateOnScreen('Screenshots/herb/waterVialBank.png', confidence = .99)
+	# close_bank_btn = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	close_bank_btn = pyautogui.locateOnScreen('Screenshots/bank/closeBank.png', confidence = .80)
+	empty_inv_btn = pyautogui.locateOnScreen('Screenshots/cooking/emptyInv.png', confidence = .90)
+
+	# if None in (withdrawl_x_quantity_btn, water_vial_bank, empty_inv_btn):
+		# var_names = [withdrawl_x_quantity_btn, water_vial_bank, empty_inv_btn]
+		# print("Variables that are None: ", [var_names[index] for index, var in enumerate(var_names) if var is None])
+
+	try:
+		print("Setting withdrawl quantity to custom (Should be set to 14)")	
+		pos = clickPos(withdrawl_x_quantity_btn, 2 , 2)
+		realmouse.move_mouse_to(pos[0] , pos[1])
+		mouse.click(Button.left, 1)
+	except:
+		print("Couldn't find withdrawl_x_quantity_btn, likely already set to custom amount")
+		pass
+
+	rounds_completed = -1
+	water_vial_inv = None
+	done = False
+	while not done:
+		rounds_completed += 1
+		print(f"begginning round: {rounds_completed}")
+		try:
+			if pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'BankEmpty.png', confidence=.99):
+				print("Found a stack of 0 herbs. Ending")
+				done = True
+				logOut()
+				return
+
+			grimmy_herb_bank = pyautogui.locateOnScreen('Screenshots/herb/grimmy' + herb + 'Bank.png', confidence=.95)
+
+			if not grimmy_herb_bank:
+				print("No more herbs were found. Ending")
+				done = True
+				logOut()
+				return
+
+			# Grab herbs and water vials and close bank
+
+			print("clicking herb in bank")
+			move_mouse_and_click(object=grimmy_herb_bank, deviation_x=4, deviation_y=4)
+
+			print("clicking vial in bank")
+			move_mouse_and_click(object=water_vial_bank, deviation_x=2, deviation_y=2)
+
+			print("clicking close bank btn")
+			move_mouse_and_click(object=close_bank_btn, deviation_x=4, deviation_y=4)
+
+			grimmy_herb_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = .90))
+			confidence = .9
+			while not grimmy_herb_inv:
+				#bandaid, try again and if not log out
+				print("couldn't find herbs")
+				print("confidence: ", confidence)
+				confidence -= .01
+				grimmy_herb_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/grimmy' +  herb + 'Inv.png', confidence = confidence))
+				# logOut()
+				# return
+				
+			if not water_vial_inv:
+					water_vial_inv = list(pyautogui.locateAllOnScreen('Screenshots/herb/waterVialInv.png', confidence = .90))
+
+			# Clean each herb
+			print("cleaning herbs")
+			[move_mouse_and_click(object=herb, deviation_x=4, deviation_y=4) for herb in grimmy_herb_inv]
+
+			# Click the last herb and the first water vial to combine
+			print("combining")
+			move_mouse_and_click(object=water_vial_inv[0], deviation_x=4, deviation_y=4)
+			move_mouse_and_click(object=grimmy_herb_inv[-1], deviation_x=4, deviation_y=4)
+			
+
+			if (random.choice(['click' , 'space' , 0 , 0])) == 'space':
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press(' ')
+				keyboard.release(' ')
+			else:
+				time.sleep(.075 * random.randrange(10, 21))
+				keyboard.press('1')
+				keyboard.release('1')
+			time.sleep(9)
+
+			print("click banker")
+			move_mouse_and_click(object=banker, deviation_x=10, deviation_y=15, sleep_time=1)
+
+			print("click empty inv")
+			move_mouse_and_click(object=empty_inv_btn, deviation_x=4, deviation_y=4)
+
+		except Exception as e: 
+			print(e)
+			print(traceback.format_exc())
+			print("log out")
 
 def test():
 	mouse = MouseController()
 	keyboard = KeyboardController()
+	banker = int((mouse.position)[0]), int((mouse.position)[0])+20 , int((mouse.position)[1]), int((mouse.position)[1])+20
+	move_mouse_and_click(object=banker, deviation_x=10, deviation_y=15, sleep_time=10)
 
-	Xone , Yone = int((mouse.position)[0]) , int((mouse.position)[1])
-	while True:
-		x1 , y1 = stringCord(Xone , Yone)
-		realmouse.move_mouse_to(x1 , y1)
-		mouse.click(Button.left, 1)
-
-		time.sleep(random.randrange(20, 35))
 	
 
 
@@ -1453,10 +1575,16 @@ def nmz():
 	keyboard = KeyboardController()
 	mouse = MouseController()
 	overload = list(pyautogui.locateAllOnScreen('Screenshots/nmz/overload.png', confidence = .96))
+	print(f"overload potions found: {len(overload)}")
+	
 	absorptions = list(pyautogui.locateAllOnScreen('Screenshots/nmz/absorption.png', confidence = .96))
+	print(f"absorption potions found: {len(absorptions)}")
+	
 	prayer = pyautogui.locateOnScreen('Screenshots/nmz/prayer.png', confidence = .70)
+	print(f"prayer found: {True if prayer else False}")
 	outside = pyautogui.locateOnScreen('Screenshots/nmz/outside.png', confidence = .70)
-	print(len(absorptions))
+	print(f"outside found: {True if outside else False}")
+
 	total_time = 300
 	counter = 0
 	while not outside:
@@ -2049,6 +2177,8 @@ def main():
 	elif script == 'herb':
 		AIOHerbs()
 	else:
+		# test()
+		clean_and_create_potion()
 		print("Invalid script entered. Please enter 'help' for a list of commands")
 main()
 	
