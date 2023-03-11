@@ -1769,7 +1769,7 @@ def spinFlax():
 	quantity = pyautogui.locateOnScreen('Screenshots/bank/all.png', confidence = .80)
 
 	flax = pyautogui.locateOnScreen('Screenshots/spinFlax/flax.png', confidence = .90)
-	close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+	close_bank = pyautogui.locateOnScreen('Screenshots/bank/closeBank.png', confidence = .80)
 
 	pos = clickPos(quantity, 2 , 2)
 	realmouse.move_mouse_to(pos[0] , pos[1])
@@ -1830,9 +1830,14 @@ def spinFlax():
 			pos = clickPos(spell, 4 , 4)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 
-			for i in range(5):
+			for i in range(2):
 				mouse.click(Button.left, 1)
-				time.sleep(3)
+				time.sleep(.1)
+				mouse.click(Button.left, 1)
+				time.sleep(5.8)
+
+			mouse.click(Button.left, 1)
+			time.sleep(1)
 
 			#click on banker
 			x1 , y1 = stringCord(Xone , Yone)
@@ -1860,7 +1865,7 @@ def spinFlax():
 			time.sleep(1)
 		except:
 			notDone = False
-			close_bank = pyautogui.locateOnScreen('Screenshots/cooking/closeBank.png', confidence = .80)
+			close_bank = pyautogui.locateOnScreen('Screenshots/bank/closeBank.png', confidence = .80)
 			if close_bank:
 				pos = clickPos(close_bank, 4 , 4)
 				realmouse.move_mouse_to(pos[0] , pos[1])

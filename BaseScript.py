@@ -59,11 +59,11 @@ class BaseScript:
 
 
     def skillcheck(self, skill):
-        skillTab = pyautogui.locateOnScreen('Screenshots/skillcheck/skillTab.png', confidence = .70)
+        skillTab = pyautogui.locateOnScreen('Screenshots/skillcheck/skillTab.png', confidence = .90)
         if skillTab:
             self.move_mouse_and_click(object=skillTab, deviation_x=3, deviation_y=3, sleep_time=.5)
         
-        skill = pyautogui.locateOnScreen('Screenshots/skillcheck/' + skill + '.png' , confidence = .70)
+        skill = pyautogui.locateOnScreen('Screenshots/skillcheck/' + skill + '.png' , confidence = .90)
         if skill:
             self.move_mouse(object=skill, deviation_x=3, deviation_y=3, sleep_time=(3 + .0001 * random.randrange(1, 500)))
         
