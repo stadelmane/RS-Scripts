@@ -126,109 +126,6 @@ def invFull(item, folder, quantity):
 	else:
 		return False
 
-def minecoal():
-	sleep_time = 1.3
-	inv_count = 0
-	maxTime = False
-	mouse = MouseController()
-	rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .70)
-	rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .70)
-	rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .70)
-	itterations = input("How many itterations: ")
-
-	for i in range(int(itterations)):
-		curr_count = list(pyautogui.locateAllOnScreen('Screenshots/coalMining/ironoreInv.png', confidence = .90))
-		print(len(curr_count), inv_count)
-		if inv_count + 3 == len(curr_count):
-			sleep_time += -.005
-			print(sleep_time)
-		else:
-			sleep_time += .005
-			print("in else statement")
-		if invFull('ironoreInv' , 'coalMining' , 20):
-			dropItem('ironoreInv' , 'coalMining')
-
-		inv_count = len(curr_count)
-
-
-
-		if random.randrange(0, 100) == 68:
-				skillcheck('mining')
-
-		rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .90)
-		while not rock1:
-			pass
-		pos = clickPos(rock1 , 20 , 20)
-		realmouse.move_mouse_to(pos[0], pos[1])
-		mouse.click(Button.left, 1)
-		time.sleep(sleep_time)
-			
-		pos = clickPos(rock2 , 20 , 20)
-		realmouse.move_mouse_to(pos[0], pos[1])
-		mouse.click(Button.left, 1)
-		time.sleep(sleep_time)
-			
-
-		pos = clickPos(rock3 , 20 , 5)
-		realmouse.move_mouse_to(pos[0], pos[1])
-		mouse.click(Button.left, 1)
-		time.sleep(sleep_time)
-			
-	logOut()
-
-def minecoalwa():
-	failures = 0
-	mouse = MouseController()
-	rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .70)
-	rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .70)
-	rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .70)
-	itterations = input("How many itterations: ")
-	for i in range(int(itterations)):
-		if random.randrange(0, 100) == 68:
-				skillcheck('mining')
-
-		failures = 0
-		rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', confidence = .95)
-		if rock1:
-			pos = clickPos(rock1 , 20 , 20)
-			realmouse.move_mouse_to(pos[0], pos[1])
-			mouse.click(Button.left, 1)
-			while(rock1):
-				time.sleep(.15)
-				rock1 = pyautogui.locateOnScreen('Screenshots/coalMining/rock1.png', grayscale = False, confidence = .95)
-				failures +=1
-				if failures > 10:
-					rock1 = False
-		if invFull('ironoreInv' , 'coalMining' , 16):
-			dropItem('ironoreInv' , 'coalMining')
-
-		failures = 0
-		rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', confidence = .90)
-		if rock2:
-			pos = clickPos(rock2 , 20 , 20)
-			realmouse.move_mouse_to(pos[0], pos[1])
-			mouse.click(Button.left, 1)
-			while(rock2):
-				time.sleep(.15)
-				rock2 = pyautogui.locateOnScreen('Screenshots/coalMining/rock2.png', grayscale = False, confidence = .90)
-				failures +=1
-				if failures > 10:
-					rock2 = False
-
-		failures = 0
-		rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', confidence = .90)
-		if rock3:
-			pos = clickPos(rock3 , 20 , 5)
-			realmouse.move_mouse_to(pos[0], pos[1])
-			mouse.click(Button.left, 1)
-			while(rock3):
-				time.sleep(.15)
-				rock3 = pyautogui.locateOnScreen('Screenshots/coalMining/rock3.png', grayscale = False, confidence = .90)
-				failures +=1
-				if failures > 10:
-					rock3 = False
-	logOut()
-
 def dropItem(item, folder):
 	keyboard = KeyboardController()
 	mouse = MouseController()
@@ -1606,12 +1503,16 @@ def nmz():
 
 
 			overloadPot = overload[counter // 4]
-			counter += 1
 			pos = clickPos(overloadPot, 3 , 3)
 			realmouse.move_mouse_to(pos[0] , pos[1])
 			mouse.click(Button.left, 1)
 
-			
+			absorptionPot = absorptions[counter // 4]
+			pos = clickPos(absorptionPot, 3 , 3)
+			realmouse.move_mouse_to(pos[0] , pos[1])
+			mouse.click(Button.left, 1)
+
+			counter += 1
 
 			total_time = 0
 
@@ -2253,7 +2154,6 @@ def main():
 		print("flyFish")
 		print("gem")
 		print("hotWater")
-		print("minecoal")
 		print("mining")
 		print("nmz")
 		print("pizza")
@@ -2264,8 +2164,6 @@ def main():
 		print("varrockAgility")
 	elif script == 'sandCrabs':
 		sandCrabs()
-	elif script == 'minecoal':
-		minecoal()
 	elif script == 'trainMagic':
 		trainMagic()
 	elif script == 'hotWater':
